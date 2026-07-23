@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://part107quiz.com/sitemap.xml

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviation Weather for Drone Pilots: METARs, TAFs & Density Altitude — Part 107 Quiz</title>
+<meta name="description" content="Learn to read METARs and TAFs, understand density altitude, and review the Part 107 weather minimums and hazards tested on the FAA drone knowledge exam.">
+<link rel="canonical" href="https://part107quiz.com/study-guide/weather-for-drone-pilots.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛩</text></svg>">
+<link rel="stylesheet" href="../styles.css">
+<script src="../config.js" defer></script>
+</head>
+<body>
+<header class="site-header"><nav class="nav container">
+  <a class="brand" href="../index.html">🛩 Part 107 <span class="tail">Quiz</span></a>
+  <div class="nav-links">
+    <a href="../mock-exam.html">Mock Exam</a>
+    <a href="../index.html#practice">Practice Tests</a>
+    <a href="./index.html">Study Guide</a>
+    <a class="btn-cta" href="../free-mock-exam-pdf.html">Free 50-Q PDF</a>
+  </div>
+</nav></header>
+<main class="container narrow">
+  <p class="breadcrumb"><a href="../index.html">Home</a> › <a href="./index.html">Study Guide</a> › Weather</p>
+  <article class="prose">
+  <h1>Aviation Weather for Drone Pilots: METARs, TAFs, and Density Altitude</h1>
+  <p class="updated">Updated July 2026 · Part 107 Quiz editorial team</p>
+
+  <p>Weather makes up roughly 11-16% of the FAA Part 107 knowledge exam — enough questions that you shouldn't treat this section as an afterthought. Just as important, weather is one of the few things that can turn a routine drone flight into a genuinely dangerous one. This guide walks through the Part 107 weather minimums, how to read a raw METAR and TAF, why density altitude matters for a small unmanned aircraft, and the fog and thunderstorm hazards that show up most often both on the test and in the field.</p>
+
+  <h2>Part 107 Weather Minimums</h2>
+  <p>Under 14 CFR Part 107, you may only operate when flight visibility is at least 3 statute miles from your control station. You must also keep your drone at least 500 feet below any cloud and at least 2,000 feet horizontally from any cloud. These numbers give you — and any other aircraft that might be sharing the airspace — enough room to see and avoid each other, since your drone doesn't carry a transponder or a second set of eyes scanning for traffic. Expect the exam to test these three figures directly, often as a scenario question describing cloud cover and asking whether an operation is legal.</p>
+
+  <h2>Reading a METAR</h2>
+  <p>A METAR is a routine surface weather observation: the actual current conditions at an airport, typically updated once an hour. Reporting stations encode those conditions into a compact string of letters and numbers. Here's a real-world example from Austin-Bergstrom International Airport:</p>
+  <p><strong>KAUS 121853Z 24015G25KT 10SM SCT045 32/18 A2992</strong></p>
+  <table>
+  <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+  <tbody>
+  <tr><td>KAUS</td><td>Austin-Bergstrom International Airport (station identifier)</td></tr>
+  <tr><td>121853Z</td><td>Observed on the 12th day of the month at 1853 Zulu (UTC)</td></tr>
+  <tr><td>24015G25KT</td><td>Wind from 240° true at 15 knots, gusting to 25 knots</td></tr>
+  <tr><td>10SM</td><td>Visibility 10 statute miles</td></tr>
+  <tr><td>SCT045</td><td>Scattered clouds at 4,500 ft AGL</td></tr>
+  <tr><td>32/18</td><td>Temperature 32°C / dewpoint 18°C</td></tr>
+  <tr><td>A2992</td><td>Altimeter setting 29.92 inHg</td></tr>
+  </tbody>
+  </table>
+  <p>Two details are easy to mix up on the exam. First, wind direction is always where the wind is coming <em>from</em>, not where it's blowing toward — so 240° means the wind is out of the southwest. Second, cloud heights in a METAR are reported in hundreds of feet AGL, so SCT045 means 4,500 feet above ground level, not sea level and not 45 feet. A "G" in the wind group always flags a gust value, as in G25 above.</p>
+
+  <h2>TAFs</h2>
+  <p>Where a METAR tells you what's happening right now, a Terminal Aerodrome Forecast (TAF) tells you what's expected next. A TAF forecasts conditions for the area within 5 statute miles of an airport, typically covering a 24- or 30-hour period. TAFs reuse most of the same shorthand as METARs — wind, visibility, and cloud groups — so once you're comfortable decoding a METAR, a TAF reads the same way, just broken into forecast time periods instead of a single observation. Check a METAR to see what conditions are doing right now, and a TAF to judge whether conditions will hold up for a flight later today or tomorrow.</p>
+
+  <h2>Density Altitude and Drone Performance</h2>
+  <p>Density altitude is pressure altitude corrected for non-standard temperature — essentially, how "thin" the air actually behaves compared to the standard atmosphere (15°C and 29.92 inHg at sea level). Hot temperatures, high field elevation, and high humidity all push density altitude up, meaning the air is thinner than raw altitude numbers would suggest. Thinner air gives each propeller less mass to push against, which reduces thrust and shortens battery endurance, since the motors work harder to produce the same lift. A multirotor that climbs briskly on a cool morning near sea level can feel noticeably sluggish, and drain its battery faster, launching from a hot, high-elevation site in the afternoon. For more on how conditions like this affect your aircraft in flight, see our guide to <a href="../loading-performance.html">loading and performance</a>.</p>
+
+  <h2>Stable vs Unstable Air</h2>
+  <table>
+  <thead><tr><th>Factor</th><th>Stable air</th><th>Unstable air</th></tr></thead>
+  <tbody>
+  <tr><td>Clouds</td><td>Stratiform (layered)</td><td>Cumulus</td></tr>
+  <tr><td>Air motion</td><td>Smooth</td><td>Turbulent</td></tr>
+  <tr><td>Visibility</td><td>Often poor (haze trapped)</td><td>Generally good</td></tr>
+  <tr><td>Precipitation</td><td>Steady</td><td>Showery</td></tr>
+  </tbody>
+  </table>
+  <p>A temperature inversion is an extreme, very stable case, and it's notorious for trapping smoke and haze near the surface — visibility can be poor even when there's no rain anywhere in the forecast. Unstable air tends to give better visibility between showers, at the cost of a bumpier ride while you're airborne.</p>
+
+  <h2>Fog</h2>
+  <p>Fog forms when the temperature and dewpoint spread closes in toward zero, meaning the air is at or near saturation. Two types come up often on the exam. Radiation fog forms on clear, calm nights over moist ground, as the ground radiates heat away and cools the air just above it down to its dewpoint. Advection fog forms when moist air moves over a cooler surface — common along coastlines — and needs at least some wind to carry that moist air in. Either type can push visibility below your legal 3-statute-mile minimum with very little warning, especially around dawn.</p>
+
+  <h2>Thunderstorms</h2>
+  <p>Thunderstorms need three ingredients to form: moisture, unstable air, and a lifting force. They move through three life-cycle stages. In the cumulus stage, updrafts dominate and the cloud is still building. In the mature stage, precipitation reaches the surface — this is the most violent stage, with strong updrafts and downdrafts active side by side. In the dissipating stage, downdrafts take over and the storm weakens. Hazards include turbulence, wind shear, microbursts (intense, localized downdrafts), hail, and lightning. There's no safe distance close enough to justify flying a drone near a thunderstorm — stay well clear and wait it out.</p>
+  <p>Wind shear deserves a separate mention: it's a sudden change in wind speed or direction, and it can occur at any altitude — not only near thunderstorms, but also along frontal zones and temperature inversions.</p>
+
+  <div class="tip">On test day, expect at least one question to hand you a raw METAR or TAF string and ask you to pull out a specific element — wind, visibility, or cloud height. Practice decoding strings left to right until it becomes automatic.</div>
+
+  <h2>Test Yourself</h2>
+  <p>Ready to check what stuck? Work through our <a href="../weather.html">weather practice questions</a> for scenario-style items on minimums, METARs, and atmospheric hazards, or jump into a full <a href="../mock-exam.html">mock exam</a> to see how weather questions mix in with the rest of the Part 107 knowledge areas. You'll find every other topic back on the main <a href="./index.html">Study Guide</a> page.</p>
+
+  <h2>FAQ</h2>
+  <details class="faq">
+  <summary>Do I need to memorize every possible METAR abbreviation for the exam?</summary>
+  <p>No. Focus on recognizing the common groups — station, time, wind, visibility, sky condition, temperature/dewpoint, and altimeter setting. The exam typically gives you a full METAR or TAF string and asks about one specific element, so practice reading strings piece by piece rather than trying to memorize an exhaustive code list.</p>
+  </details>
+  <details class="faq">
+  <summary>What's the practical difference between a METAR and a TAF?</summary>
+  <p>A METAR is an observation: a record of conditions that already exist, typically issued about once an hour. A TAF is a forecast for the area within 5 statute miles of an airport, typically covering 24 or 30 hours. Check a METAR to see what's happening right now, and a TAF to plan a flight later today or tomorrow.</p>
+  </details>
+  <details class="faq">
+  <summary>My drone doesn't have a piston engine — why does density altitude matter?</summary>
+  <p>Density altitude affects anything that generates lift by moving air, including multirotor propellers. Thinner air (high density altitude) gives each rotor less to push against, which reduces thrust and shortens battery endurance, even without a carbureted engine involved.</p>
+  </details>
+  <details class="faq">
+  <summary>Where can I check current aviation weather before I fly?</summary>
+  <p><a href="https://aviationweather.gov">aviationweather.gov</a> is the free official source for current METARs, TAFs, and other aviation weather products in the United States. It's also worth reviewing the FAA's own guidance at <a href="https://www.faa.gov">faa.gov</a> before you fly.</p>
+  </details>
+  </article>
+</main>
+<footer class="site-footer"><div class="container">
+  <div class="foot-links">
+    <a href="../index.html">Home</a>
+    <a href="../mock-exam.html">Mock Exam</a>
+    <a href="./index.html">Study Guide</a>
+    <a href="../free-mock-exam-pdf.html">Free PDF</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </div>
+  <p class="legal">Part107Quiz.com is an independent study resource and is not affiliated with, endorsed by, or sponsored by the Federal Aviation Administration (FAA) or any government agency. Question content is original and based on publicly available FAA source material (14 CFR Part 107, the Remote Pilot ACS, and FAA study guides). Always verify current regulations at faa.gov before you fly. © 2026 Part107Quiz.com</p>
+</div></footer>
+</body>
+</html>

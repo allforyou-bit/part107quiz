@@ -1,0 +1,9 @@
+# Internal docs & product masters — NEVER commit to this public repo
+docs/
+PRODUCTS/
+*.env
+.claude/
+
+# OS noise
+Thumbs.db
+.DS_Store

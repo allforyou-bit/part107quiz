@@ -1,0 +1,3 @@
+# ads.txt — placeholder until AdSense is activated for this domain.
+# When AdSense approves part107quiz.com, replace this file with:
+# google.com, pub-6709396576574623, DIRECT, f08c47fec0942fa0

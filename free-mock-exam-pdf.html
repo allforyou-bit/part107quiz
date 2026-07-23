@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Part 107 Practice Exam PDF — 50 Questions with Answer Key — Part 107 Quiz</title>
+<meta name="description" content="Download a free 50-question FAA Part 107 practice exam PDF with a complete answer key and explanations. Print it and study offline — no cost.">
+<link rel="canonical" href="https://part107quiz.com/free-mock-exam-pdf.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛩</text></svg>">
+<link rel="stylesheet" href="./styles.css">
+<script src="./config.js" defer></script>
+</head>
+<body>
+<header class="site-header"><nav class="nav container">
+  <a class="brand" href="./index.html">🛩 Part 107 <span class="tail">Quiz</span></a>
+  <div class="nav-links">
+    <a href="./mock-exam.html">Mock Exam</a>
+    <a href="./index.html#practice">Practice Tests</a>
+    <a href="./study-guide/index.html">Study Guide</a>
+    <a class="btn-cta" href="./free-mock-exam-pdf.html">Free 50-Q PDF</a>
+  </div>
+</nav></header>
+
+<main class="container narrow">
+  <div class="lead-box" style="margin-top: 34px;">
+    <h2>Free 50-Question Part 107 Practice Exam (PDF)</h2>
+    <p style="color: var(--muted);">The printable companion to this site's practice tests — built from the same 110+ question bank and the FAA's published exam blueprint.</p>
+    <ul class="checklist">
+      <li><strong>50 exam-style questions</strong> spanning all five FAA test areas at realistic weighting</li>
+      <li><strong>Complete answer key</strong> with a plain-English explanation and regulation reference for every question</li>
+      <li><strong>Print-friendly layout</strong> — take it anywhere, no internet needed</li>
+      <li>Free. No payment, ever.</li>
+    </ul>
+    <div id="ml-slot"></div>
+    <div id="direct-slot">
+      <div class="form-row">
+        <a class="btn btn-primary" href="./assets/downloads/part107-free-50-question-mock-exam.pdf" download>Download the PDF (Free)</a>
+      </div>
+      <p class="quiz-note">Instant download — no email required.</p>
+    </div>
+  </div>
+
+  <div class="prose">
+    <h2>What's inside</h2>
+    <p>The PDF mirrors the real exam's structure: regulations, airspace &amp; requirements, weather, loading &amp; performance, and operations (including night operations and Remote ID, which the FAA folds into the operations area). Question 1 to 50, then a full answer key you can grade yourself against — each answer explains <em>why</em> it's right and cites the underlying rule, so a wrong guess still teaches the concept.</p>
+    <h2>How to use it</h2>
+    <p>Print it, set a 100-minute timer (matching the real exam's pace of 2 minutes per question), and take it in one sitting with no notes. Score it with the key: 70% is the FAA pass mark, and if you clear 85% you're in comfortable territory. Whatever you missed, drill that area with the <a href="./index.html#practice">online topic tests</a> — they re-shuffle on every attempt, so you can't memorize letter positions.</p>
+    <p>Want the full experience first? The <a href="./mock-exam.html">online 60-question mock exam</a> runs a live 120-minute countdown and grades each area automatically.</p>
+  </div>
+</main>
+
+<script>
+/* MailerLite gate (BvM playbook): if embed ids are configured, show the
+   email form; the direct download stays available below it. If not
+   configured, the direct download alone is shown — page is useful day one. */
+document.addEventListener("DOMContentLoaded", function () {
+  var cfg = window.P107_CONFIG || {};
+  var em = cfg.email || {};
+  if (!em.mlAccount || !em.mlForm) return;
+  (function (w, d, e, u, f, l, n) {
+    w[f] = w[f] || function () { (w[f].q = w[f].q || []).push(arguments); };
+    l = d.createElement(e); l.async = 1; l.src = u;
+    n = d.getElementsByTagName(e)[0]; n.parentNode.insertBefore(l, n);
+  })(window, document, "script", "https://assets.mailerlite.com/js/universal.js", "ml");
+  ml("account", em.mlAccount);
+  var slot = document.getElementById("ml-slot");
+  slot.innerHTML = '<p style="font-weight:700; color: var(--navy); margin-top:14px;">Get the PDF + a free 5-day Part 107 study course by email:</p>' +
+    '<div class="ml-embedded" data-form="' + em.mlForm + '"></div>';
+  var direct = document.getElementById("direct-slot");
+  direct.querySelector(".quiz-note").textContent = "Prefer not to subscribe? The direct download above stays free either way.";
+});
+</script>
+
+<footer class="site-footer"><div class="container">
+  <div class="foot-links">
+    <a href="./index.html">Home</a>
+    <a href="./mock-exam.html">Mock Exam</a>
+    <a href="./study-guide/index.html">Study Guide</a>
+    <a href="./free-mock-exam-pdf.html">Free PDF</a>
+    <a href="./about.html">About</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./terms.html">Terms</a>
+  </div>
+  <p class="legal">Part107Quiz.com is an independent study resource and is not affiliated with, endorsed by, or sponsored by the Federal Aviation Administration (FAA) or any government agency. Question content is original and based on publicly available FAA source material (14 CFR Part 107, the Remote Pilot ACS, and FAA study guides). Always verify current regulations at faa.gov before you fly. © 2026 Part107Quiz.com</p>
+</div></footer>
+</body>
+</html>
