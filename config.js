@@ -22,7 +22,11 @@ window.P107_CONFIG = {
     mlForm: ""
   },
   products: {
-    bankPdfUrl: ""
+    bankPdfUrl: "",
+    /* Premium Pack (5 mock exams + 300-question bank, $29).
+       Paste the Ko-fi/Payhip product URL to open the store —
+       premium.html shows "coming soon" until this is set. */
+    premiumUrl: ""
   }
 };
 
