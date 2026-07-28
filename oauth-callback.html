@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authorization complete</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛩</text></svg>">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header"><nav class="nav container">
+  <a class="brand" href="./index.html">🛩 Part 107 <span class="tail">Quiz</span></a>
+</nav></header>
+
+<div class="container narrow">
+  <div class="prose">
+    <h1 id="head">Authorization complete</h1>
+    <p id="lede">Copy the code below and paste it back into the terminal window that is waiting for it.</p>
+
+    <div class="lead-box" id="box">
+      <h2>Authorization code</h2>
+      <p style="word-break:break-all;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.05rem;background:var(--sky-soft);padding:14px 16px;border-radius:10px;margin-top:10px" id="code">—</p>
+      <p class="form-row"><button class="btn btn-primary" id="copy" type="button">Copy code</button></p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:10px">
+        This code is single-use and expires within minutes. It grants listing access to
+        the shop owner's own tool only, and is useless without the app key held locally.
+      </p>
+    </div>
+
+    <p id="nothing" hidden>
+      This page only does something when Etsy redirects to it during an authorization.
+      Nothing to see otherwise — <a href="./index.html">head back to the practice tests</a>.
+    </p>
+
+    <p class="breadcrumb"><a href="./index.html">← Part107Quiz home</a></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code");
+  var err = q.get("error");
+  var box = document.getElementById("box");
+  if (err) {
+    document.getElementById("head").textContent = "Authorization was not completed";
+    document.getElementById("lede").textContent =
+      "Etsy reported: " + err + ". Close this tab and start the connection again.";
+    box.hidden = true;
+    return;
+  }
+  if (!code) {
+    box.hidden = true;
+    document.getElementById("lede").hidden = true;
+    document.getElementById("nothing").hidden = false;
+    return;
+  }
+  var el = document.getElementById("code");
+  el.textContent = code;
+  document.getElementById("copy").addEventListener("click", function () {
+    navigator.clipboard.writeText(code).then(function () {
+      document.getElementById("copy").textContent = "Copied ✓";
+    });
+  });
+})();
+</script>
+</body>
+</html>
