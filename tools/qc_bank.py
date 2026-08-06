@@ -23,8 +23,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BANK = os.path.join(ROOT, "bank.js")
 
 EXPECTED_TOPICS = {
-    "regulations": 31, "airspace": 28, "weather": 15,
-    "loading-performance": 10, "operations": 26,
+    "regulations": 31, "airspace": 28, "weather": 20,
+    "loading-performance": 10, "operations": 36,
     "night-operations": 7, "remote-id": 8,
 }
 MOCK_NEEDS = [
