@@ -223,3 +223,83 @@ details.faq p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
   .btn-ghost { margin-left: 0; margin-top: 10px; }
   .quiz-shell { padding: 18px; }
 }
+
+/* ---------- static question archive (tools/build_static_questions.py) ----------
+   The written-out question set that lives in the HTML itself, below the
+   interactive drill. Crawlers and print readers get the full text; the quiz
+   above still shuffles its options at runtime. */
+.qa-jump { margin: 14px 0 0; font-size: .95rem; }
+.qa-jump a { color: var(--navy-3); font-weight: 600; text-decoration: none; }
+.qa-jump a:hover { text-decoration: underline; }
+
+.qa-archive { border-top: 1px solid var(--line); margin-top: 34px; padding: 30px 0 10px; }
+.qa-archive h2 { color: var(--navy); font-size: 1.35rem; line-height: 1.3; }
+.qa-archive .qa-lede { color: var(--muted); margin: 10px 0 22px; font-size: .96rem; line-height: 1.65; }
+.qa-archive .qa-foot { color: var(--muted); margin: 6px 0 10px; font-size: .95rem; }
+.qa-archive .qa-foot a, .qa-archive .qa-exp a { color: var(--navy-3); }
+
+.qa-list { list-style: none; counter-reset: qa; padding: 0; margin: 0; }
+.qa-list > li.qa {
+  counter-increment: qa;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.qa-q { font-weight: 700; color: var(--ink); line-height: 1.55; }
+.qa-q::before {
+  content: "Q" counter(qa) ". ";
+  color: var(--navy-3);
+  font-weight: 800;
+}
+.qa-opts { list-style: none; padding: 0; margin: 12px 0 0; }
+.qa-opts li {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  margin-bottom: 7px;
+  font-size: .95rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.qa-opts li.is-correct { background: var(--green-soft); border-color: var(--green); }
+.qa-l { font-weight: 700; color: var(--muted); margin-right: 5px; }
+.qa-opts li.is-correct .qa-l { color: var(--green); }
+.qa-tag {
+  display: inline-block;
+  margin-left: 8px;
+  background: var(--green);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  vertical-align: 2px;
+}
+.qa-exp { margin-top: 12px; color: var(--ink); font-size: .95rem; line-height: 1.65; }
+.qa-exp strong { color: var(--navy); }
+.qa-ref { margin-top: 7px; color: var(--muted); font-size: .85rem; font-style: italic; }
+
+@media (max-width: 560px) {
+  .qa-archive { padding-top: 24px; }
+  .qa-list > li.qa { padding: 15px 14px; }
+  .qa-tag { display: block; margin: 6px 0 0; width: max-content; }
+}
+
+/* exam blueprint table (mock-exam.html) */
+.qa-archive h3 { color: var(--navy); font-size: 1.08rem; margin: 26px 0 8px; }
+.qa-archive p { color: var(--ink); font-size: .96rem; line-height: 1.7; margin-bottom: 12px; }
+.qa-archive p a { color: var(--navy-3); }
+table.blueprint { width: 100%; border-collapse: collapse; font-size: .93rem; background: var(--card); }
+table.blueprint th, table.blueprint td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+table.blueprint thead th { background: var(--sky-soft); color: var(--navy); font-weight: 700; font-size: .86rem; }
+table.blueprint td:first-child { font-weight: 600; color: var(--navy); }
+table.blueprint a { color: var(--navy-3); font-weight: 600; }
+.breakdown { overflow-x: auto; }
+@media (max-width: 560px) {
+  table.blueprint { font-size: .85rem; min-width: 460px; }
+}

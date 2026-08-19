@@ -1,3 +1,7 @@
-# ads.txt — placeholder until AdSense is activated for this domain.
-# When AdSense approves part107quiz.com, replace this file with:
-# google.com, pub-6709396576574623, DIRECT, f08c47fec0942fa0
+# ads.txt for part107quiz.com
+# Authorized digital sellers (IAB Tech Lab ads.txt v1.0.2).
+# Publisher id is the shared KAYMEDIA AdSense account, same record redsealquiz.ca
+# already serves. Declaring it before approval is valid and harmless: it means
+# no "unauthorized inventory" warning and no lost serving window on the day
+# part107quiz.com is approved.
+google.com, pub-6709396576574623, DIRECT, f08c47fec0942fa0
