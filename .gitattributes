@@ -1,0 +1,13 @@
+# core.autocrlf is true on this machine, and git was classifying the
+# generated PDFs as text: committing one printed "LF will be replaced by
+# CRLF the next time Git touches it". Today's files survive that only
+# because they happen to contain no CRLF sequences -- a fresh clone of a
+# less lucky build would check out a corrupted download. Mark them binary
+# so no line-ending filter ever runs over them.
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
