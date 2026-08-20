@@ -135,6 +135,27 @@ def retarget_counts(html, topic, n):
     return html
 
 
+# Patterns that state the size of the FREE bank. Deliberately narrow: premium.html
+# also says "adds 190 questions", which describes the paid pack's exclusive content
+# and must never be rewritten from the free bank count.
+TOTAL_PATTERNS = [
+    r'\b\d+\+(?= (?:exam-style )?[Qq]uestions)',
+    r'\b\d+\+(?= question bank)',
+    r'(?<=All )\d+(?= questions are written out)',
+    r'(?<=free )\d+(?=-question site)',
+    r"(?<=The free site's )\d+(?= questions stay free)",
+]
+
+
+def sync_total(html, total):
+    """Rewrite every advertised free-bank size in `html` to `total`."""
+    for pat in TOTAL_PATTERNS:
+        html = re.sub(pat,
+                      lambda m: str(total) + ("+" if m.group(0).endswith("+") else ""),
+                      html)
+    return html
+
+
 def main():
     bank = load_bank()
     by_topic = {}
@@ -167,10 +188,23 @@ def main():
         ihtml = re.sub(r'(href="\./%s">Start )\d+( questions)' % re.escape(fname),
                        lambda m: m.group(1) + str(n) + m.group(2), ihtml)
     total = len(bank)
-    ihtml = re.sub(r'\b\d+\+ (questions|exam-style questions)',
-                   lambda m: "%d+ %s" % (total, m.group(1)), ihtml)
+    ihtml = sync_total(ihtml, total)
     open(ipath, "w", encoding="utf-8", newline="\n").write(ihtml)
     print("index.html   total %d, per-topic counts synced" % total)
+
+    # Every other page that advertises the size of the free bank. These were
+    # edited by hand each week and drifted: on 2026-08-20 the bank held 180 while
+    # index.html's <title> still said "160+ Questions" (the old regex was
+    # case-sensitive and missed the capital Q) and three more pages still said 160.
+    for fname in ("mock-exam.html", "free-mock-exam-pdf.html", "premium.html"):
+        fpath = os.path.join(ROOT, fname)
+        if not os.path.exists(fpath):
+            continue
+        before = open(fpath, encoding="utf-8").read()
+        after = sync_total(before, total)
+        if after != before:
+            open(fpath, "w", encoding="utf-8", newline="\n").write(after)
+            print("%-22s advertised total -> %d" % (fname, total))
     return 0
 
 
