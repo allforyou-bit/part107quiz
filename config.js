@@ -16,7 +16,7 @@
    ============================================================ */
 window.P107_CONFIG = {
   siteUrl: "https://part107quiz.com",
-  adsenseClient: "",
+  adsenseClient: "ca-pub-6709396576574623",
   email: {
     mlAccount: "",
     mlForm: ""
