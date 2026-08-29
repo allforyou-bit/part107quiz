@@ -144,6 +144,7 @@ TOTAL_PATTERNS = [
     r'(?<=All )\d+(?= questions are written out)',
     r'(?<=free )\d+(?=-question site)',
     r"(?<=The free site's )\d+(?= questions stay free)",
+    r'(?<=<td>Questions</td><td>)\d+(?=</td>)',  # premium.html comparison table, free-site column only
 ]
 
 
