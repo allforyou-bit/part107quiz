@@ -4,8 +4,10 @@
    ------------------------------------------------------------
    siteUrl       : canonical origin (no trailing slash)
    adsenseClient : Google AdSense publisher id, e.g. "ca-pub-1234...".
-                   Leave "" until AdSense approves this site. When set,
-                   Auto Ads load on every page. Also update /ads.txt!
+                   Leave "" until AdSense shows this site as Ready. The review
+                   does not need this script: AdSense verifies a site through
+                   ads.txt (already live) or a meta tag. When set, Auto Ads
+                   load on every page.
    email         : MailerLite embedded form (PUBLIC ids, not secrets).
                    mlAccount = account id digits, mlForm = form code.
                    When both set, the signup form on /free-mock-exam-pdf.html
@@ -16,7 +18,7 @@
    ============================================================ */
 window.P107_CONFIG = {
   siteUrl: "https://part107quiz.com",
-  adsenseClient: "ca-pub-6709396576574623",
+  adsenseClient: "",
   email: {
     mlAccount: "",
     mlForm: ""

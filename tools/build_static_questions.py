@@ -9,9 +9,9 @@ Every topic page used to be an empty <div id="quiz-root"></div> that quiz.js
 filled in at runtime. A search-engine crawler (and an AdSense reviewer's
 fetcher) sees the raw HTML, so those pages measured 158-186 words each while
 the actual product -- 160 explained exam questions -- lived only in bank.js.
-Our sister site redsealquiz.ca was rejected twice for "Low value content" for
-exactly this reason, and the fix that got it past review was publishing the
-questions as static HTML. This script is that fix for part107quiz.com.
+Pages whose real content only exists in JavaScript are a common reason for
+"Low value content" rejections, and publishing the questions as static HTML
+is the fix. This script does that for part107quiz.com.
 
 WHAT IT DOES
 ------------
