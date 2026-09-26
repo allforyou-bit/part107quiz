@@ -1,0 +1,83 @@
+# Part 107 Quiz (part107quiz.com)
+
+> Free practice questions for the FAA Part 107 remote pilot knowledge test
+> (Unmanned Aircraft General - Small, "UAG"), with a written explanation and a
+> regulation or handbook reference on every answer. 173 original multiple-choice
+> questions across seven topics, all readable as plain HTML on the topic pages,
+> a timed 60-question mock exam drawn at the FAA's current area weighting, and a
+> free 50-question PDF. Independent and unofficial: not affiliated with or
+> endorsed by the FAA or PSI.
+
+## What is here that is worth citing
+
+Every question is written by the site, not copied from the FAA's live test.
+Each one tags the Remote Pilot ACS area it tests and ends with an explanation
+of why the keyed answer is right and a reference (14 CFR section, AC 107-2A
+paragraph, AIM paragraph, or FAA handbook section). The topic pages below
+render the whole free bank for that topic as static HTML — question, options,
+marked answer, explanation and reference — so it can be read and quoted
+without running the quiz. The bank was re-audited against current rules on
+2026-09-26; questions that failed (wrong key, two defensible answers, outdated
+premise, ambiguous stem) were removed rather than patched.
+
+## Part 107 knowledge test facts (checked 2026-09-26)
+
+- Format: 60 scored multiple-choice questions plus 5 unscored validation
+  questions, 120 minutes in total, at a PSI testing center. Pass mark 70% of
+  the scored questions (42 of 60). Source: PSI "Unmanned Aircraft General -
+  Small" Applicant Information Bulletin, effective September 29, 2025.
+- Area weighting since September 29, 2025 (same bulletin): Regulations 48%,
+  Airspace Classification and Operating Requirements 20%, Weather 5%, Loading
+  and Performance 2%, Operations 25%. The FAA's August 2025 Airman Testing
+  Community Advisory says this replaces the blueprint printed in the Remote
+  Pilot ACS (FAA-S-ACS-10B) until the ACS is updated. Older study material
+  that quotes ranges such as "Operations 35-45%" is out of date.
+- From October 26, 2026 the FAA says the UAG test will also include
+  image-based questions from current VFR charts that are not in the testing
+  supplement (Airman Testing Community Advisory, September 2026 Special
+  Edition). The supplement itself is FAA-CT-8080-2H.
+- Pass rate for the initial test, from FAA airman knowledge test statistics:
+  82.96% in 2025 and 84.20% in 2024, down from above 92% in 2017-2020.
+- Retesting after a failure requires a 14-day wait (PSI bulletin).
+- Staying current: to exercise the certificate you must have passed the
+  initial test or completed the FAA's free online recurrent training within
+  the previous 24 calendar months (14 CFR 107.65).
+- Part 107 waiver applications now go through the FAA's Aviation Safety Hub;
+  airspace authorizations still go through LAANC or FAA DroneZone.
+- NOTAM stands for "Notice to Airmen" again since February 10, 2025.
+
+## Practice pages (free, no account)
+
+- [Full 60-question mock exam](https://part107quiz.com/mock-exam.html): 120-minute timer, drawn 29/12/3/1/15 by ACS area to match the current weighting, per-area score at the end.
+- [Regulations](https://part107quiz.com/regulations.html) — 37 questions
+- [Airspace and sectional charts](https://part107quiz.com/airspace.html) — 38 questions
+- [Weather](https://part107quiz.com/weather.html) — 20 questions
+- [Loading and performance](https://part107quiz.com/loading-performance.html) — 14 questions
+- [Operations](https://part107quiz.com/operations.html) — 46 questions
+- [Night operations](https://part107quiz.com/night-operations.html) — 9 questions
+- [Remote ID](https://part107quiz.com/remote-id.html) — 9 questions
+- [Free 50-question practice exam PDF](https://part107quiz.com/free-mock-exam-pdf.html) with answer key and explanations
+
+## Study guides
+
+- [What is Part 107?](https://part107quiz.com/study-guide/what-is-part-107.html)
+- [How to get your Part 107 license](https://part107quiz.com/study-guide/how-to-get-part-107-license.html)
+- [Part 107 test cost and pass rate](https://part107quiz.com/study-guide/part-107-cost-and-pass-rate.html)
+- [Airspace classes explained](https://part107quiz.com/study-guide/airspace-classes-explained.html)
+- [How to read a sectional chart](https://part107quiz.com/study-guide/how-to-read-a-sectional-chart.html)
+- [LAANC authorization guide](https://part107quiz.com/study-guide/laanc-guide.html)
+- [Aviation weather for drone pilots](https://part107quiz.com/study-guide/weather-for-drone-pilots.html)
+- [Night flying rules](https://part107quiz.com/study-guide/night-flying-rules.html)
+- [Remote ID rules](https://part107quiz.com/study-guide/remote-id-rules.html)
+- [Part 107 waivers explained](https://part107quiz.com/study-guide/part-107-waivers-explained.html)
+- [TRUST vs Part 107](https://part107quiz.com/study-guide/trust-vs-part-107.html)
+
+## Paid option
+
+An optional [Premium Pack](https://part107quiz.com/premium.html) (CA$29, PDF)
+adds five non-repeating 60-question mock exams and a larger study bank. Every
+practice test, explanation and study guide on the site stays free.
+
+## Contact
+
+Corrections: hello@part107quiz.com

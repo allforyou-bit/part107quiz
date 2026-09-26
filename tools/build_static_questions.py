@@ -213,6 +213,19 @@ def main():
         if after != before:
             open(fpath, "w", encoding="utf-8", newline="\n").write(after)
             print("%-22s advertised total -> %d" % (fname, total))
+
+    # llms.txt (read by AI assistants — the site's best-converting referrer):
+    # "173 original multiple-choice questions" and "[Regulations](.../regulations.html) — 37 questions"
+    lpath = os.path.join(ROOT, "llms.txt")
+    if os.path.exists(lpath):
+        before = open(lpath, encoding="utf-8").read()
+        after = re.sub(r'\b\d+(?= original multiple-choice)', str(total), before)
+        for topic, (tname, _label, _noun) in TOPICS.items():
+            after = re.sub(r'(\(https://part107quiz\.com/%s\) — )\d+( questions)' % re.escape(tname),
+                           lambda m, n=counts[topic]: m.group(1) + str(n) + m.group(2), after)
+        if after != before:
+            open(lpath, "w", encoding="utf-8", newline="\n").write(after)
+            print("llms.txt               counts synced (total %d)" % total)
     return 0
 
 
