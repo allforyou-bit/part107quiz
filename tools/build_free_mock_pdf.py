@@ -4,9 +4,11 @@ build_free_mock_pdf.py — Part107Quiz lead magnet factory (reportlab).
 Builds the free 50-question practice exam PDF with answer key + explanations.
 Deterministic: fixed RNG seed -> same PDF on every rebuild (stable file).
 
-Draw plan (mirrors FAA initial-exam weighting):
-  regulations 10, airspace 10, weather 7, loading-performance 4,
-  operations+night-operations+remote-id 19  = 50
+Draw plan = the FAA UAG blueprint in effect since 2025-09-29 (PSI Applicant
+Information Bulletin: Regulations 48%, Airspace 20%, Weather 5%, Loading &
+Performance 2%, Operations 25%) scaled to 50 questions, by the ACS area each
+question carries in q["acs"] (falls back to its topic's usual area):
+  I 24, II 10, III 3, IV 1, V 12  = 50
 """
 import json, os, random, re, sys
 
@@ -24,13 +26,14 @@ OUT = os.path.join(ROOT, "assets", "downloads",
 SITE = "part107quiz.com"
 SEED = 20260723
 
-PLAN = [
-    (["regulations"], 10),
-    (["airspace"], 10),
-    (["weather"], 7),
-    (["loading-performance"], 4),
-    (["operations", "night-operations", "remote-id"], 19),
-]
+PLAN = [("I", 24), ("II", 10), ("III", 3), ("IV", 1), ("V", 12)]
+TOPIC_ACS = {"regulations": "I", "remote-id": "I", "airspace": "II",
+             "weather": "III", "loading-performance": "IV",
+             "operations": "V", "night-operations": "V"}
+
+
+def acs_of(q):
+    return q.get("acs") or TOPIC_ACS.get(q["topic"], "V")
 
 NAVY = colors.HexColor("#0b2545")
 BLUE = colors.HexColor("#1d4e89")
@@ -53,8 +56,8 @@ def build():
     rng = random.Random(SEED)
     bank = load_bank()
     picked, used = [], set()
-    for topics, n in PLAN:
-        pool = sorted([q for q in bank if q["topic"] in topics],
+    for area, n in PLAN:
+        pool = sorted([q for q in bank if acs_of(q) == area],
                       key=lambda q: q["id"])
         rng.shuffle(pool)
         for q in pool[:n]:
@@ -63,14 +66,19 @@ def build():
     assert len(picked) == 50, f"picked {len(picked)}"
     rng.shuffle(picked)
 
-    # shuffle options per question (deterministic), track new key
+    # Place each key at a pre-balanced letter (13/13/12/12 across 50) and shuffle
+    # the distractors into the other slots. A plain per-question shuffle left the
+    # 2026-09-26 build at 11/18/10/11 (B = 36%), a letter bias a reader can use.
+    targets = [i % 4 for i in range(len(picked))]
+    rng.shuffle(targets)
     final = []
     letter_count = [0, 0, 0, 0]
-    for q in picked:
-        idx = [0, 1, 2, 3]
-        rng.shuffle(idx)
+    for q, ans in zip(picked, targets):
+        others = [i for i in range(4) if i != q["answer"]]
+        rng.shuffle(others)
+        idx = others[:ans] + [q["answer"]] + others[ans:]
         opts = [q["options"][i] for i in idx]
-        ans = idx.index(q["answer"])
+        assert idx.index(q["answer"]) == ans
         letter_count[ans] += 1
         final.append({"q": q["q"], "opts": opts, "ans": ans,
                       "exp": q["exp"], "ref": q["ref"]})

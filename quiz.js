@@ -13,14 +13,25 @@
 
   var PASS_PCT = 70;
 
-  /* FAA initial UAG knowledge-test area weights → 60-question mock */
+  /* FAA UAG test blueprint -> 60-question mock.
+     Source: PSI "Unmanned Aircraft General - Small" Applicant Information
+     Bulletin, effective 2025-09-29. The FAA points candidates to it in place
+     of the older percentage ranges printed in FAA-S-ACS-10B:
+     Regulations 48%, Airspace 20%, Weather 5%, Loading & Performance 2%,
+     Operations 25%  ->  29 / 12 / 3 / 1 / 15 of 60.
+     Each bank question carries the ACS area it tests in q.acs ("I".."V");
+     questions without it fall back to their topic's usual area. */
   var MOCK_PLAN = [
-    { area: "Regulations",            topics: ["regulations"],                              n: 12 },
-    { area: "Airspace & Requirements",topics: ["airspace"],                                 n: 12 },
-    { area: "Weather",                topics: ["weather"],                                  n: 8  },
-    { area: "Loading & Performance",  topics: ["loading-performance"],                      n: 5  },
-    { area: "Operations",             topics: ["operations", "night-operations", "remote-id"], n: 23 }
+    { area: "Regulations",             acs: "I",   n: 29 },
+    { area: "Airspace & Requirements", acs: "II",  n: 12 },
+    { area: "Weather",                 acs: "III", n: 3  },
+    { area: "Loading & Performance",   acs: "IV",  n: 1  },
+    { area: "Operations",              acs: "V",   n: 15 }
   ];
+  var TOPIC_ACS = {
+    "regulations": "I", "remote-id": "I", "airspace": "II", "weather": "III",
+    "loading-performance": "IV", "operations": "V", "night-operations": "V"
+  };
   var MOCK_MINUTES = 120;
 
   function shuffle(arr) {
@@ -32,9 +43,14 @@
     return a;
   }
 
-  function areaOf(topic) {
+  function acsOf(q) {
+    return q.acs || TOPIC_ACS[q.topic] || "V";
+  }
+
+  function areaOf(q) {
+    var code = acsOf(q);
     for (var i = 0; i < MOCK_PLAN.length; i++) {
-      if (MOCK_PLAN[i].topics.indexOf(topic) !== -1) return MOCK_PLAN[i].area;
+      if (MOCK_PLAN[i].acs === code) return MOCK_PLAN[i].area;
     }
     return "Operations";
   }
@@ -46,7 +62,7 @@
       var used = {};
       MOCK_PLAN.forEach(function (plan) {
         var pool = shuffle(bank.filter(function (q) {
-          return plan.topics.indexOf(q.topic) !== -1 && !used[q.id];
+          return acsOf(q) === plan.acs && !used[q.id];
         }));
         pool.slice(0, plan.n).forEach(function (q) { used[q.id] = 1; qs.push(q); });
       });
@@ -65,7 +81,7 @@
     return qs.map(function (q) {
       var idx = shuffle([0, 1, 2, 3]);
       return {
-        id: q.id, topic: q.topic, area: areaOf(q.topic),
+        id: q.id, topic: q.topic, area: areaOf(q),
         q: q.q,
         options: idx.map(function (k) { return q.options[k]; }),
         answer: idx.indexOf(q.answer),
@@ -99,7 +115,7 @@
     try { best = localStorage.getItem(storageKey()); } catch (e) {}
     shell.appendChild(el("h2", null, page.title));
     var info = page.mode === "mock"
-      ? "60 questions &middot; " + MOCK_MINUTES + "-minute timer &middot; FAA topic weighting &middot; pass mark " + PASS_PCT + "%"
+      ? "60 questions &middot; " + MOCK_MINUTES + "-minute timer &middot; current FAA area weighting &middot; pass mark " + PASS_PCT + "%"
       : n + " questions &middot; instant feedback with explanations &middot; pass mark " + PASS_PCT + "%";
     shell.appendChild(el("p", "quiz-note", info + (best ? " &middot; Your best: <strong>" + best + "%</strong>" : "")));
     var acts = el("div", "quiz-actions");
@@ -107,7 +123,7 @@
     b.onclick = start;
     acts.appendChild(b);
     shell.appendChild(acts);
-    shell.appendChild(el("p", "quiz-note", "Free forever. No sign-up needed. Answer choices are shuffled on every attempt, exactly like the real exam experience at a PSI test center."));
+    shell.appendChild(el("p", "quiz-note", "Free forever. No sign-up needed. Answer choices are shuffled on every attempt so you learn the concept, not the letter position."));
     root.appendChild(shell);
   }
 

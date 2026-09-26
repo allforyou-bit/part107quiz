@@ -10,9 +10,13 @@ Checks:
   4. explanation >= 40 chars and reference present
   5. topic counts match the published site copy
   6. source answer-key distribution within 15-35% per letter
-  7. "longest option is correct" tell below 40%
+  7. "longest option is correct" tell below 40%, and the mirror-image
+     "shortest option is correct" tell below 40% (added 2026-09-26: the paid
+     premium2 set had the key as the unique shortest option in 98% of items
+     and the old gate only looked one way)
   8. banned phrases (all/none of the above, guarantees)
-  9. mock-exam pools can fill the FAA-weighted 60-question draw
+  9. every question carries its ACS area (q["acs"] in I..V) and each area
+     pool can fill the 60-question draw at the FAA's 2025 blueprint weights
  10. local link integrity across all HTML pages
 
 Exit 0 = ALL PASS. Exit 1 = failures listed.
@@ -22,16 +26,14 @@ import json, os, re, sys, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BANK = os.path.join(ROOT, "bank.js")
 
+# 2026-09-26 content audit: 7 free questions discarded (180 -> 173).
 EXPECTED_TOPICS = {
-    "regulations": 41, "airspace": 38, "weather": 20,
-    "loading-performance": 15, "operations": 46,
-    "night-operations": 10, "remote-id": 10,
+    "regulations": 37, "airspace": 38, "weather": 20,
+    "loading-performance": 14, "operations": 46,
+    "night-operations": 9, "remote-id": 9,
 }
-MOCK_NEEDS = [
-    (["regulations"], 12), (["airspace"], 12), (["weather"], 8),
-    (["loading-performance"], 5),
-    (["operations", "night-operations", "remote-id"], 23),
-]
+# PSI UAG bulletin, effective 2025-09-29: 48/20/5/2/25 % of 60 -> quiz.js MOCK_PLAN
+MOCK_NEEDS = [("I", 29), ("II", 12), ("III", 3), ("IV", 1), ("V", 15)]
 BANNED = ["all of the above", "none of the above", "guaranteed to pass",
           "you will pass", "100% pass"]
 
@@ -110,12 +112,22 @@ longest_correct = sum(
 tell_pct = longest_correct / total * 100
 if tell_pct >= 40:
     fail(f"longest-option-is-correct tell: {tell_pct:.1f}% (must be <40%)")
+shortest_correct = sum(
+    1 for q in bank
+    if min(range(4), key=lambda i: len(q["options"][i])) == q["answer"]
+)
+short_pct = shortest_correct / total * 100
+if short_pct >= 40:
+    fail(f"shortest-option-is-correct tell: {short_pct:.1f}% (must be <40%)")
 
 # ---- 9. mock pools ----
-for topics, need in MOCK_NEEDS:
-    have = sum(counts.get(t, 0) for t in topics)
+for q in bank:
+    if q.get("acs") not in ("I", "II", "III", "IV", "V"):
+        fail(f"{q.get('id')}: missing or bad ACS area {q.get('acs')!r}")
+for area, need in MOCK_NEEDS:
+    have = sum(1 for q in bank if q.get("acs") == area)
     if have < need:
-        fail(f"mock pool {topics}: {have} < required {need}")
+        fail(f"mock pool ACS {area}: {have} < required {need}")
 
 # ---- 10. local link integrity ----
 html_files = glob.glob(os.path.join(ROOT, "*.html")) + \
@@ -142,7 +154,7 @@ for hf in html_files:
 print(f"bank: {total} questions across {len(counts)} topics")
 print(f"answer distribution A/B/C/D: {dist} "
       f"({'/'.join(f'{n/total*100:.0f}%' for n in dist)})")
-print(f"longest-option tell: {tell_pct:.1f}%")
+print(f"longest-option tell: {tell_pct:.1f}%  shortest-option tell: {short_pct:.1f}%")
 for w in warns:
     print("WARN:", w)
 if fails:

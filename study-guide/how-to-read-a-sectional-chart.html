@@ -26,7 +26,7 @@
   <h1>How to Read a Sectional Chart: A Drone Pilot's Guide</h1>
   <p class="updated">Updated August 2026 · Part 107 Quiz editorial team</p>
 
-  <p>On exam day you will be handed a booklet of chart excerpts — the FAA's Airman Knowledge Testing Supplement — and asked questions that can only be answered by reading them. This is the single most reliable place to lose points, because chart questions do not reward familiarity with the regulations. They reward knowing what a fuzzy magenta band means and being able to subtract one number from another under time pressure.</p>
+  <p>On exam day you will be handed a booklet of chart excerpts — the FAA's Airman Knowledge Testing Supplement — and asked questions that can only be answered by reading them. Chart questions test a different skill from the regulation questions, and knowing the rules alone will not answer them. They reward knowing what a fuzzy magenta band means and being able to subtract one number from another under time pressure.</p>
 
   <p>The good news is that the sectional is a closed system. There are maybe fifteen symbols a remote pilot ever needs, and once you can name them the questions become arithmetic. This guide covers those fifteen.</p>
 
@@ -57,7 +57,7 @@
   </tbody>
   </table>
 
-  <p>Two rules cover almost every case. <strong>Solid or dashed lines mean the airspace reaches the ground</strong>, so a drone flight inside them needs authorization no matter how low it stays. <strong>Fuzzy vignettes mean the airspace starts overhead</strong> — 700 ft AGL for magenta, 1,200 ft for blue — so a flight capped at 400 ft AGL underneath is in Class G and needs nothing.</p>
+  <p>Two rules cover almost every case. <strong>Dashed lines, and any solid-line Class B or C segment with an SFC floor, mean the airspace reaches the ground</strong>, so a drone flight inside them needs authorization no matter how low it stays; under a Class B or C shelf with a higher floor, a flight that stays below that floor is outside that airspace. <strong>Fuzzy vignettes mean the airspace starts overhead</strong> — 700 ft AGL for magenta, 1,200 ft for blue — so a flight capped at 400 ft AGL underneath is in Class G and needs nothing.</p>
 
   <p>The dashed magenta line versus the fuzzy magenta band is the distinction the exam returns to again and again, and the two look similar at a glance on a small excerpt. Dashed line, sharp edge, authorization required. Fuzzy band, soft edge, you are underneath it. Our <a href="./airspace-classes-explained.html">airspace classes guide</a> goes deeper on what each class is for, and the <a href="./laanc-guide.html">LAANC guide</a> covers how the authorization itself gets granted.</p>
 
@@ -67,7 +67,7 @@
 
   <h2>Airport Symbols and Data Blocks</h2>
 
-  <p>Airport color tells you one thing immediately: <strong>blue means the field has a control tower, magenta means it does not</strong>. Airports with a hard-surfaced runway of 8,069 ft or longer are drawn as a scaled runway outline; smaller fields appear as circles with runway lines. Tick marks around the circle indicate fuel is available during normal business hours, and a star above the symbol means a rotating beacon operates from sunset to sunrise.</p>
+  <p>Airport color tells you one thing immediately: <strong>blue means the field has a control tower, magenta means it does not</strong>. Airports with a hard-surfaced runway longer than 8,069 ft, and some airports with multiple shorter runways, are drawn as a runway-pattern outline; airports with hard-surfaced runways of 1,500 to 8,069 ft appear as circles with runway lines. Tick marks around the circle indicate fuel is available during normal business hours, and a star above the symbol means a rotating beacon operates from sunset to sunrise.</p>
 
   <p>Underneath the symbol sits the data block. A typical non-towered entry reads something like:</p>
 
@@ -75,7 +75,7 @@
 
   <ul class="checklist">
   <li><strong>412</strong> — field elevation in feet MSL. This is the number you use to convert chart MSL altitudes into your AGL limits.</li>
-  <li><strong>L</strong> — runway lighting is available, at least part of the night.</li>
+  <li><strong>L</strong> — runway edge lighting operates sunset to sunrise; an asterisk (*L) means lighting limitations exist, such as part-time or pilot-controlled lighting, so check the Chart Supplement.</li>
   <li><strong>42</strong> — length of the longest runway in hundreds of feet: 4,200 ft.</li>
   <li><strong>122.7</strong> — the frequency. A circled <strong>Ⓒ</strong> beside it marks the CTAF, the common traffic advisory frequency pilots self-announce on at a non-towered field. At a towered field you will instead see <strong>CT</strong> followed by the tower frequency, and often an ATIS frequency below it.</li>
   </ul>
@@ -112,13 +112,13 @@
   <tbody>
   <tr><td>Prohibited</td><td>P-</td><td>No flight, ever. Usually security-driven.</td></tr>
   <tr><td>Restricted</td><td>R-</td><td>Hazards such as artillery or guided missiles. Entry needs permission from the controlling agency.</td></tr>
-  <tr><td>Warning</td><td>W-</td><td>Same hazards, over international waters.</td></tr>
+  <tr><td>Warning</td><td>W-</td><td>Same kinds of hazards, in airspace beginning 3 NM off the U.S. coast, over domestic or international waters or both.</td></tr>
   <tr><td>Military Operations Area</td><td>MOA</td><td>Military training. Not prohibited, but expect fast, maneuvering traffic.</td></tr>
   <tr><td>Alert</td><td>A-</td><td>High volume of training activity. Flight is permitted; vigilance is expected.</td></tr>
   </tbody>
   </table>
 
-  <p>National security UAS flight restrictions and TFRs are a separate matter. They are not printed on the sectional at all, because they change daily — check NOTAMs or B4UFLY before every flight, even after LAANC has approved you.</p>
+  <p>National security UAS flight restrictions and TFRs are a separate matter. The sectional shows only TFRs relating to national security: TFR areas relating to national security (a broken blue line), National Defense Airspace TFR areas (cross-hatching), and sporting event TFR sites (a stadium symbol). Check NOTAMs or B4UFLY before every flight, even after LAANC has approved you.</p>
 
   <h2>A Worked Example</h2>
 
@@ -127,7 +127,7 @@
   <ol>
   <li><strong>Airspace.</strong> Dashed magenta means Class E to the surface, so this flight needs FAA authorization before takeoff. The magenta airport symbol means there is no control tower — the authorization still comes from the FAA, not from anyone at the field.</li>
   <li><strong>Ceiling.</strong> Field elevation 318 ft MSL, so a 400 ft AGL flight tops out near 718 ft MSL.</li>
-  <li><strong>The tower.</strong> It rises 385 ft AGL, above your 400-ft working ceiling in practical terms, and its top at 703 ft MSL sits just below your ceiling in MSL. Stay well clear laterally, or use the 107.51(b) structure exception deliberately and stay inside the 400-ft radius.</li>
+  <li><strong>The tower.</strong> It rises 385 ft AGL, only 15 ft short of your 400-ft ceiling, and its top at 703 ft MSL sits just 15 ft below your 718 ft MSL ceiling, so treat it as an obstacle at your working altitude. Stay well clear laterally, or use the 107.51(b) structure exception deliberately and stay inside the 400-ft radius.</li>
   <li><strong>Radio.</strong> 123.0 is the CTAF. Monitoring it costs nothing and tells you when someone is entering the pattern.</li>
   </ol>
 
@@ -139,7 +139,7 @@
 
   <h2>Test Yourself</h2>
 
-  <p>Airspace and chart reading together account for the largest share of failed sections. Drill them with our <a href="../airspace.html">Airspace practice questions</a>, which include chart-symbology and facility-map items, then run a full <a href="../mock-exam.html">Part 107 mock exam</a> to see how they mix with weather and operations. Other knowledge areas are in the <a href="./index.html">Study Guide</a>.</p>
+  <p>Airspace and chart reading both appear in the FAA's Remote Pilot ACS: airspace is Area II, and aeronautical charts are listed under Airport Operations in Area V. Drill them with our <a href="../airspace.html">Airspace practice questions</a>, which include chart-symbology and facility-map items, then run a full <a href="../mock-exam.html">Part 107 mock exam</a> to see how they mix with weather and operations. Other knowledge areas are in the <a href="./index.html">Study Guide</a>.</p>
 
   <h2>FAQ</h2>
 
@@ -155,7 +155,7 @@
 
   <details class="faq">
   <summary>Are altitudes on a sectional MSL or AGL?</summary>
-  <p>MSL, with one exception: obstruction heights printed in parentheses are AGL. Part 107's 400-ft ceiling is AGL, so convert by adding the ground or field elevation. Mixing the two is the most common chart error on the exam.</p>
+  <p>MSL, with one exception: obstruction heights printed in parentheses are AGL. Part 107's 400-ft ceiling is AGL, so convert by adding the ground or field elevation. Mixing the two up is an easy way to pick a wrong answer.</p>
   </details>
 
   <details class="faq">
@@ -165,7 +165,7 @@
 
   <details class="faq">
   <summary>Are TFRs shown on the sectional?</summary>
-  <p>No. Temporary flight restrictions are issued and lifted far faster than the chart cycle, so they never appear on a printed sectional. Check NOTAMs or B4UFLY before each flight — a LAANC authorization does not override an active TFR.</p>
+  <p>The FAA charts only TFRs relating to national security, but that is not a single symbol. On sectionals and TACs you can see TFR areas relating to national security (a broken blue line), National Defense Airspace TFR areas (an area bounded with cross-hatching, used for routine TFRs whose NOTAMs last 12 months or more), and sporting event TFR sites (a stadium symbol). Any other TFR is not charted, so you will find it only in the NOTAMs. Even for a charted TFR, the NOTAM text holds the details of the restriction. Check NOTAMs or B4UFLY before each flight — a LAANC authorization does not override an active TFR.</p>
   </details>
   </article>
 </main>

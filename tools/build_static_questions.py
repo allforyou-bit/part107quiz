@@ -125,7 +125,9 @@ def add_jump_link(html, n):
 def retarget_counts(html, topic, n):
     """Rewrite stale question counts in title / description / intro copy."""
     # "<N> Free Questions", "<N> questions", "<N>-question", "Start <N> questions"
-    html = re.sub(r'(\d+)(\s+Free\s+(?:Sectional Chart |METAR &amp; TAF |ADM &amp; CRM )?Questions)',
+    # Title words between "Free" and "Questions" are capitalised words, optionally
+    # joined by "&amp;" ("38 Free Airspace &amp; Sectional Chart Questions").
+    html = re.sub(r'(\d+)(\s+Free\s+(?:[A-Z][A-Za-z]*\s+(?:&amp;\s+)?)*Questions)',
                   lambda m: str(n) + m.group(2), html)
     html = re.sub(r'(?<![\d,])(\d+)(\s*(?:-|\s)question(?:s)?\b)',
                   lambda m: (m.group(0) if m.group(1) in ("60", "50", "160", "300")
@@ -203,6 +205,11 @@ def main():
             continue
         before = open(fpath, encoding="utf-8").read()
         after = sync_total(before, total)
+        # per-topic links such as mock-exam.html's area table:
+        # <a href="./regulations.html#all-questions">41 questions</a>
+        for topic, (tname, _label, _noun) in TOPICS.items():
+            after = re.sub(r'(href="\./%s#all-questions">)\d+( questions</a>)' % re.escape(tname),
+                           lambda m, n=counts[topic]: m.group(1) + str(n) + m.group(2), after)
         if after != before:
             open(fpath, "w", encoding="utf-8", newline="\n").write(after)
             print("%-22s advertised total -> %d" % (fname, total))
