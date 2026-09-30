@@ -123,7 +123,8 @@ def build():
                            f"<b>{SITE}</b>", sub))
     story.append(Spacer(1, 10))
     intro = Table([[Paragraph(
-        "<b>How to use this exam:</b> give yourself 100 minutes (the real exam's pace), "
+        "<b>How to use this exam:</b> give yourself 92 minutes (the real exam's pace: "
+        "120 minutes for 60 scored plus 5 unscored questions), "
         "no notes, and circle your answers. The pass mark on the real test is 70% — "
         "35 of 50 here. Score yourself with the key at the back: every answer includes "
         "a plain-English explanation and the FAA reference behind it. "
