@@ -1,8 +1,9 @@
 /* ============================================================
    Part 107 Quiz — question bank (single source of truth)
-   Topics: regulations(41) airspace(38) weather(20)
-           loading-performance(15) operations(46)
-           night-operations(10) remote-id(10)  = 180 questions
+   Topics: regulations(37) airspace(38) weather(20)
+           loading-performance(14) operations(46)
+           night-operations(9) remote-id(9)  = 173 questions
+   (authoritative counts: EXPECTED_TOPICS in tools/qc_bank.py)
    Strict JSON inside (tools/qc_bank.py parses it).
    All content original, based on public FAA source material:
    14 CFR Part 107, Remote Pilot ACS (FAA-S-ACS-10), FAA study guides.
