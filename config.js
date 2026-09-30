@@ -15,6 +15,8 @@
                    download so it is useful from day one.
    products      : paste store URLs (Ko-fi/Payhip) to light up paid CTAs.
                    Empty string = CTA hidden (no broken links).
+                   premiumUrl opens premium.html's buy buttons and adds the
+                   Premium Pack to every quiz/mock result card (quiz.js).
    ============================================================ */
 window.P107_CONFIG = {
   siteUrl: "https://part107quiz.com",
@@ -24,7 +26,6 @@ window.P107_CONFIG = {
     mlForm: ""
   },
   products: {
-    bankPdfUrl: "",
     /* Premium Pack v1.1 (5 mock exams + 385-question bank, CA$29).
        Paste the Ko-fi/Payhip product URL to open the store —
        premium.html shows "coming soon" until this is set. */

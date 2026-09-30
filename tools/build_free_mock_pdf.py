@@ -173,6 +173,57 @@ def build():
         "questions against a live 120-minute timer with automatic per-area scoring — the "
         "closest thing to test day without the fee.", key))
 
+    # ---- final page: the paid pack ----
+    # Until 2026-09-29 the PDF ended on the line above and never named the
+    # Premium Pack, so a reader who finished it had no way to learn the pack
+    # existed. Everything before this page is unchanged by this block: the
+    # questions are drawn from the seeded RNG above, before any story is built.
+    story.append(PageBreak())
+    story.append(Paragraph("Want more full-length practice?", h1))
+    story.append(Paragraph(f"An optional paid add-on from {SITE}", sub))
+    story.append(Spacer(1, 10))
+    pbody = ParagraphStyle("pbody", parent=styles["Normal"], fontSize=11,
+                           leading=16, spaceAfter=8)
+    pbullet = ParagraphStyle("pbullet", parent=pbody, leftIndent=16,
+                             bulletIndent=2, spaceAfter=6)
+    ptitle = ParagraphStyle("ptitle", parent=pbody, fontName="Helvetica-Bold",
+                            fontSize=14, leading=18, textColor=NAVY,
+                            spaceAfter=10)
+    box = Table([[[
+        Paragraph("Part 107 Premium Pack", ptitle),
+        Paragraph("5 more full 60-question mock exams, drawn at the FAA's area "
+                  "weighting in effect since September 29, 2025. No question "
+                  "repeats across the five exams.", pbullet, bulletText="•"),
+        Paragraph("A 385-question study bank with the answer, a plain-English "
+                  "explanation and the regulation reference under every question. "
+                  "212 of those questions are not on the free site.",
+                  pbullet, bulletText="•"),
+        Paragraph("Printable PDFs. One-time CA$29 (about US$21), charged in "
+                  "Canadian dollars. No subscription.", pbullet,
+                  bulletText="•"),
+    ]]], colWidths=[6.9 * inch])
+    box.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), SKY),
+        ("BOX", (0, 0), (-1, -1), 1, BLUE),
+        ("LEFTPADDING", (0, 0), (-1, -1), 14),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+        ("TOPPADDING", (0, 0), (-1, -1), 12),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+    ]))
+    story.append(box)
+    story.append(Spacer(1, 12))
+    story.append(Paragraph(
+        "Details and sample pages: "
+        f'<a href="https://{SITE}/premium.html" color="#1d4e89"><u>{SITE}/premium.html</u></a>',
+        pbody))
+    story.append(Paragraph(
+        "Checkout is on Ko-fi, under the shop name “Red Seal Exam Prep” "
+        "(same publisher).", small))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph(
+        f"Every practice test, explanation and study guide on {SITE} stays free, "
+        "and so does this PDF.", small))
+
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
     dist = "/".join(str(n) for n in letter_count)
     print(f"OK {OUT}")

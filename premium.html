@@ -34,6 +34,7 @@
     </div>
     <a class="btn btn-primary" id="buy-top" data-premium-buy href="#" hidden>Get the Premium Pack — CA$29 (≈ US$21)</a>
     <a class="btn btn-ghost" href="./free-mock-exam-pdf.html">Try the free 50-question PDF first</a>
+    <p class="buy-note" data-premium-note hidden>Checkout opens on Ko-fi under the shop name &ldquo;Red Seal Exam Prep&rdquo; (same publisher). Billed CA$29 &asymp; US$21.</p>
     <p id="soon-top" class="sub" style="margin-top:14px" hidden>Opening soon — the free site isn't going anywhere in the meantime.</p>
   </div>
 </div>
@@ -46,6 +47,12 @@
       <div class="card"><div class="meta">The drill file</div><h3>385-question study bank (PDF)</h3><p>Every question grouped by topic with the answer, the plain-English why, and the regulation reference directly underneath. Drill a weak topic until the reasoning is obvious, then take the mocks cold.</p></div>
       <div class="card"><div class="meta">The tier difference</div><h3>Harder than the free site</h3><p>The free site teaches the rules. The premium bank drills applications: LAANC grid decisions, MSL-vs-AGL shelf math, TAF decoding, CRM scenarios, over-people categories, Remote ID edge cases.</p></div>
       <div class="card"><div class="meta">The honest part</div><h3>What it doesn't do</h3><p>It won't sit the exam for you, and it doesn't include the FAA's airman knowledge testing supplement (that's a free FAA download — we tell you exactly which one). No subscription, no upsell inside.</p></div>
+    </div>
+    <h3 class="sample-title">See the actual pages</h3>
+    <p class="sample-lede">Two pages from the files you download, shown as they print. Select a page to open it full size.</p>
+    <div class="grid grid-2 sample-pages">
+      <figure><a href="./assets/img/premium-sample-mock-exam.png"><img src="./assets/img/premium-sample-mock-exam.png" width="900" height="1165" loading="lazy" alt="Page 1 of Premium Mock Exam 2: the exam format line (60 questions, FAA 2025 area weighting, 120-minute limit, 70% pass mark) and questions 1 to 6 with answer choices A to D and no answers shown"></a><figcaption>Premium Mock Exam 2, page 1. Answers stay out of sight until the key after question 60.</figcaption></figure>
+      <figure><a href="./assets/img/premium-sample-study-bank.png"><img src="./assets/img/premium-sample-study-bank.png" width="900" height="1165" loading="lazy" alt="Page 1 of the Premium Study Bank: the Regulations section with questions 1 to 4, each followed by the answer, a one-line explanation and its 14 CFR reference"></a><figcaption>Study bank, page 1. Every question carries its answer, the reason and the 14 CFR reference.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -85,6 +92,7 @@
       <h3>Ready when you are</h3>
       <p>One-time CA$29 (about US$21 — charged in Canadian dollars). Instant download. The free site stays free either way.</p>
       <a class="btn btn-primary" id="buy-bottom" data-premium-buy href="#" hidden>Get the Premium Pack — CA$29 (≈ US$21)</a>
+      <p class="buy-note" data-premium-note hidden>Checkout opens on Ko-fi under the shop name &ldquo;Red Seal Exam Prep&rdquo; (same publisher). Billed CA$29 &asymp; US$21.</p>
       <p id="soon-bottom" style="color:#c9dcef" hidden>Opening soon — grab the <a href="./free-mock-exam-pdf.html" style="color:#fff">free 50-question PDF</a> while you wait.</p>
     </div>
   </div>
@@ -117,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
                document.getElementById("soon-bottom")];
   if (url) {
     buys.forEach(function (b) { b.href = url; b.hidden = false; });
+    document.querySelectorAll("[data-premium-note]").forEach(function (n) { n.hidden = false; });
   } else {
     soons.forEach(function (s) { if (s) s.hidden = false; });
   }

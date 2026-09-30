@@ -261,20 +261,39 @@
     });
     shell.appendChild(bd);
 
-    /* CTA — free lead magnet always; paid bank only when URL configured */
+    /* CTA — free lead magnet always; the Premium Pack whenever the store URL
+       (products.premiumUrl) is configured. The button links to premium.html,
+       which says what is in the pack before anyone reaches the checkout.
+       Until 2026-09-29 this read products.bankPdfUrl, a key config.js never
+       filled, so no quiz or mock result ever showed the paid option. */
     var cfg = window.P107_CONFIG || {};
+    var base = page.base || ".";
+    var hasPremium = !!(cfg.products && cfg.products.premiumUrl);
+    var premiumFirst = hasPremium && page.mode === "mock"; /* just finished a full-length rehearsal */
     var cta = el("div", "cta-box");
-    cta.appendChild(el("h3", null, pass ? "Ready to lock it in before test day?" : "Want a structured way to close the gap?"));
-    cta.appendChild(el("p", null, "Download the free 50-question practice exam PDF with a full answer key and explanations — study anywhere, no internet needed."));
+    cta.appendChild(el("h3", null, premiumFirst
+      ? (pass ? "Want more full-length rehearsals before test day?" : "Want more full-length practice to close the gap?")
+      : (pass ? "Ready to lock it in before test day?" : "Want a structured way to close the gap?")));
+    var freeText = "Download the free 50-question practice exam PDF with a full answer key and explanations — study anywhere, no internet needed.";
+    var paidText = "<strong>Premium Pack:</strong> 5 more full 60-question mocks + 385-question bank (212 not on this site), CA$29 (≈ US$21). Printable PDFs, one-time purchase.";
+    var dl = el("a", "btn " + (premiumFirst ? "btn-ghost" : "btn-primary"), "Get the Free 50-Question PDF");
+    dl.href = base + "/free-mock-exam-pdf.html";
+    var buy = null;
+    if (hasPremium) {
+      buy = el("a", "btn " + (premiumFirst ? "btn-primary" : "btn-ghost"), "See the Premium Pack — CA$29");
+      buy.href = base + "/premium.html";
+    }
     var wrap = el("div");
-    var dl = el("a", "btn btn-primary", "Get the Free 50-Question PDF");
-    dl.href = (page.base || ".") + "/free-mock-exam-pdf.html";
-    wrap.appendChild(dl);
-    if (cfg.products && cfg.products.bankPdfUrl) {
-      var buy = el("a", "btn btn-ghost", "Get the Complete Question Bank");
-      buy.href = cfg.products.bankPdfUrl;
-      buy.target = "_blank"; buy.rel = "noopener";
+    if (premiumFirst) {
+      cta.appendChild(el("p", null, paidText));
+      cta.appendChild(el("p", null, "Or start with the free 50-question practice exam PDF — full answer key and explanations, no internet needed."));
       wrap.appendChild(buy);
+      wrap.appendChild(dl);
+    } else {
+      cta.appendChild(el("p", null, freeText));
+      if (buy) cta.appendChild(el("p", null, paidText));
+      wrap.appendChild(dl);
+      if (buy) wrap.appendChild(buy);
     }
     cta.appendChild(wrap);
     shell.appendChild(cta);
