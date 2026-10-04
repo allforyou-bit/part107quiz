@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CBZ8Y19RJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CBZ8Y19RJ0');
+</script>
+<script src="/track.js" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page Not Found — Part 107 Quiz</title>
 <meta name="robots" content="noindex">
@@ -17,5 +26,21 @@
   <p style="color: var(--muted); margin: 14px 0 26px;">This page drifted beyond visual line of sight. Return to home and re-establish control.</p>
   <a class="btn btn-primary" href="/">Return to Home</a>
 </main>
+<div class="cookie-note" id="cookieBanner" role="region" aria-label="Cookie notice" hidden>
+  <span>We use Google Analytics cookies; your quiz scores are saved in your browser's local storage. <a href="/privacy.html">Privacy Policy</a></span>
+  <button type="button" id="cookieOkBtn">OK</button>
+</div>
+<script>
+(function () {
+  var b = document.getElementById("cookieBanner"), ok = null;
+  try { ok = localStorage.getItem("cookieOk"); } catch (e) {}
+  if (!b || ok) return;
+  b.hidden = false;
+  document.getElementById("cookieOkBtn").onclick = function () {
+    b.hidden = true;
+    try { localStorage.setItem("cookieOk", "1"); } catch (e) {}
+  };
+})();
+</script>
 </body>
 </html>

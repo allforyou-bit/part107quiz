@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CBZ8Y19RJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CBZ8Y19RJ0');
+</script>
+<script src="./track.js" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Part 107 Quiz</title>
-<meta name="description" content="Privacy policy for Part107Quiz.com: what we collect (very little), how quiz progress stays on your device, and what would change if email signup or advertising were ever added.">
+<meta name="description" content="Privacy policy for Part107Quiz.com: what Google Analytics records about visits and clicks, how to opt out, how quiz answers stay on your device, and what would change if email signup or advertising were ever added.">
 <link rel="canonical" href="https://part107quiz.com/privacy.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛩</text></svg>">
 <link rel="stylesheet" href="./styles.css">
@@ -17,7 +26,7 @@
     <a href="./mock-exam.html">Mock Exam</a>
     <a href="./index.html#practice">Practice Tests</a>
     <a href="./study-guide/index.html">Study Guide</a>
-    <a href="./premium.html">Premium</a>
+    <a data-cta="nav_premium" href="./premium.html">Premium</a>
     <a class="btn-cta" href="./free-mock-exam-pdf.html">Free 50-Q PDF</a>
   </div>
 </nav></header>
@@ -25,14 +34,29 @@
 <main class="container narrow">
   <article class="prose" style="margin-top: 30px;">
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective: September 26, 2026</p>
-    <p>Part107Quiz.com ("we", "this site") is designed to collect as little data as possible. This page explains, in plain language, what is and isn't collected.</p>
+    <p class="updated">Effective: October 3, 2026</p>
+    <p>Part107Quiz.com ("we", "this site") collects as little data as it can while still learning which pages and quizzes actually help people study. This page explains, in plain language, what is and isn't collected.</p>
 
-    <h2>Quiz activity stays on your device</h2>
-    <p>Your quiz answers and best scores are stored only in your browser's <em>localStorage</em>. They never leave your device, and we cannot see them. Clearing your browser data erases them.</p>
+    <h2>Quiz answers stay on your device</h2>
+    <p>Your quiz answers and best scores are stored only in your browser's <em>localStorage</em>. Your answers never leave your device, and we cannot see them. The one exception is the score of a finished attempt: when you finish a practice test or the mock exam, Google Analytics receives that attempt's percentage score, the number of questions and whether it was a pass (see the next section) &mdash; never the answers themselves. Clearing your browser data erases everything stored on your device.</p>
 
-    <h2>No accounts, no tracking by default</h2>
-    <p>This site requires no account and sets no first-party tracking cookies. Browsing and practicing on this site collects no names, precise locations, or government identifiers. If you buy the Premium Pack, Ko-fi and the payment processor you pay through share your name and email address with us (card payments can also include a billing address); their own privacy policies apply to that purchase.</p>
+    <h2>Analytics: Google Analytics 4</h2>
+    <p>Since October 3, 2026 this site uses Google Analytics 4 (measurement ID <code>G-CBZ8Y19RJ0</code>), a Google service, to count visits and to see which pages, links and quizzes are useful. Its script loads on every page and sets first-party cookies in your browser &mdash; <code>_ga</code> and <code>_ga_CBZ8Y19RJ0</code> &mdash; that hold a random identifier, so that repeat visits from the same browser can be counted as one visitor. By default these cookies expire after two years.</p>
+    <p>What Google Analytics records:</p>
+    <ul>
+      <li>the pages you view, when you view them, and the site or search engine that sent you here;</li>
+      <li>your approximate location (country, region and city), which Google derives from your IP address. Google states that Google Analytics 4 does not log or store IP addresses;</li>
+      <li>device and browser details: device type, operating system, browser, screen size and language;</li>
+      <li>these events on this site: clicks on a link to the Premium Pack page (which link &mdash; the menu, the footer, a quiz or mock-exam result, or a link inside an article &mdash; and the page it was on); clicks on the Ko-fi checkout button, including which of those links had brought you to the Premium Pack page in the same browser tab; when a Premium Pack offer was on screen for at least a second; when you finish a practice test or the mock exam, with the score described above; and downloads of the free 50-question PDF.</li>
+    </ul>
+    <p>It does not record your individual answers, your name or email address, or anything you type. What happens after you click through to Ko-fi is covered by Ko-fi's own policy (below); Google Analytics on this site does not see your purchase.</p>
+    <p>Google processes this data under the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>; see also <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses information from sites that use its services</a>. We use the reports only to decide what to write and fix on this site, and we do not sell the data.</p>
+
+    <h2>Your choices about analytics</h2>
+    <p>On your first visit a notice at the bottom of the page tells you that this site uses Google Analytics cookies. Pressing <strong>OK</strong> only hides the notice: it saves the value <code>cookieOk</code> in your browser's localStorage (not a cookie, and never sent anywhere) so the notice is not shown again. It does not switch analytics on or off. To stop Google Analytics from collecting data about your visits, install Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Google Analytics Opt-out Browser Add-on</a>, or block or delete this site's cookies in your browser settings. The practice tests and the mock exam work exactly the same either way.</p>
+
+    <h2>No accounts</h2>
+    <p>This site requires no account. Browsing and practicing on this site collects no names, email addresses, precise locations, or government identifiers. If you buy the Premium Pack, Ko-fi and the payment processor you pay through share your name and email address with us (card payments can also include a billing address); their own privacy policies apply to that purchase.</p>
 
     <h2>Email signup</h2>
     <p>The site does not currently ask for an email address. If an optional signup is added and you choose to enter your email address to receive study materials, that address is processed by our email service provider, MailerLite, under its own privacy policy. You can unsubscribe at any time using the link included in every email, and you can ask us at hello@part107quiz.com to delete your address from our email provider entirely. Downloading the free PDF does <strong>not</strong> require an email address.</p>
@@ -57,7 +81,7 @@
     <a href="./mock-exam.html">Mock Exam</a>
     <a href="./study-guide/index.html">Study Guide</a>
     <a href="./free-mock-exam-pdf.html">Free PDF</a>
-    <a href="./premium.html">Premium</a>
+    <a data-cta="footer_premium" href="./premium.html">Premium</a>
     <a href="./about.html">About</a>
     <a href="./contact.html">Contact</a>
     <a href="./privacy.html">Privacy</a>
@@ -65,5 +89,21 @@
   </div>
   <p class="legal">Part107Quiz.com is an independent study resource and is not affiliated with, endorsed by, or sponsored by the Federal Aviation Administration (FAA) or any government agency. Question content is original and based on publicly available FAA source material (14 CFR Part 107, the Remote Pilot ACS, and FAA study guides). Always verify current regulations at faa.gov before you fly. © 2026 Part107Quiz.com</p>
 </div></footer>
+<div class="cookie-note" id="cookieBanner" role="region" aria-label="Cookie notice" hidden>
+  <span>We use Google Analytics cookies; your quiz scores are saved in your browser's local storage. <a href="./privacy.html">Privacy Policy</a></span>
+  <button type="button" id="cookieOkBtn">OK</button>
+</div>
+<script>
+(function () {
+  var b = document.getElementById("cookieBanner"), ok = null;
+  try { ok = localStorage.getItem("cookieOk"); } catch (e) {}
+  if (!b || ok) return;
+  b.hidden = false;
+  document.getElementById("cookieOkBtn").onclick = function () {
+    b.hidden = true;
+    try { localStorage.setItem("cookieOk", "1"); } catch (e) {}
+  };
+})();
+</script>
 </body>
 </html>

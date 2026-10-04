@@ -282,6 +282,9 @@
     if (hasPremium) {
       buy = el("a", "btn " + (premiumFirst ? "btn-primary" : "btn-ghost"), "See the Premium Pack — CA$29");
       buy.href = base + "/premium.html";
+      /* placement for track.js: a mock result and a topic-test result are
+         different moments and are reported separately */
+      buy.setAttribute("data-cta", page.mode === "mock" ? "mock_result" : "quiz_result");
     }
     var wrap = el("div");
     if (premiumFirst) {
@@ -323,6 +326,18 @@
     acts.appendChild(again);
     shell.appendChild(acts);
     root.appendChild(shell);
+
+    /* Announce the finished attempt (added 2026-10-03). track.js turns this
+       into mock_finished / quiz_finished; nothing listens when it is not
+       loaded, and a browser without CustomEvent simply skips it. Fired once
+       per finish(), after the result screen is in the DOM. */
+    try {
+      document.dispatchEvent(new CustomEvent("p107:finished", { detail: {
+        mode: page.mode, topics: page.topics || [], pct: pct, right: right,
+        total: set.length, pass: pass
+      } }));
+    } catch (e) { /* analytics must never break the quiz */ }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 

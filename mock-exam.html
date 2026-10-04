@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CBZ8Y19RJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CBZ8Y19RJ0');
+</script>
+<script src="./track.js" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Part 107 Mock Exam — Free 60-Question Timed Practice Test (2026) — Part 107 Quiz</title>
 <meta name="description" content="Free full-length FAA Part 107 mock exam: 60 questions, 120-minute timer, current FAA area weighting, and a per-area score breakdown with explanations.">
@@ -20,7 +29,7 @@
     <a href="./mock-exam.html">Mock Exam</a>
     <a href="./index.html#practice">Practice Tests</a>
     <a href="./study-guide/index.html">Study Guide</a>
-    <a href="./premium.html">Premium</a>
+    <a data-cta="nav_premium" href="./premium.html">Premium</a>
     <a class="btn-cta" href="./free-mock-exam-pdf.html">Free 50-Q PDF</a>
   </div>
 </nav></header>
@@ -67,7 +76,7 @@
     <p>Run it cold the first time &mdash; timer on, notes away, no pausing. The score matters less than the per-area breakdown you get at the end, because that breakdown is your study plan. Whatever area comes back weakest, read its <a href="./study-guide/index.html">study guide</a>, work through that topic's full written question set, then draw a fresh 60.</p>
     <p>Timing is rarely the constraint. Two hours for 60 scored questions is two minutes each, but PSI also adds 5 unscored validation questions inside that time, so aim to leave some minutes over. Use the surplus: flag anything you were unsure of, finish the paper, then go back to the flags. Changing an answer on review is not the mistake folklore claims it is &mdash; changing it without a reason is.</p>
     <p>A practical readiness bar is two consecutive mocks at 85% or better. That leaves a 15-point cushion over the 70% pass mark, which is about the margin you want for test-day nerves and for the handful of questions phrased in a way you have not seen before. If you would rather work on paper first, the <a href="./free-mock-exam-pdf.html">free 50-question practice exam PDF</a> uses the same question style with a full answer key.</p>
-    <p>Want more than one full-length rehearsal? The <a href="./premium.html">Premium Pack</a> adds five more full 60-question mock exams that share no questions with each other, plus a 385-question study bank (212 questions not on this site), as printable PDFs for CA$29 (about US$21), one-time. Everything on this site stays free either way.</p>
+    <p>Want more than one full-length rehearsal? The <a data-cta="mock_page" href="./premium.html">Premium Pack</a> adds five more full 60-question mock exams that share no questions with each other, plus a 385-question study bank (212 questions not on this site), as printable PDFs for CA$29 (about US$21), one-time. Everything on this site stays free either way.</p>
 
     <h3>Where these questions come from</h3>
     <p>Every question is written by us against the FAA's own published sources: 14 CFR Part 107, the Remote Pilot Airman Certification Standards (FAA-S-ACS-10B), and the FAA's remote pilot study guide. Every explanation names the rule it rests on, so you can check us. Nobody outside the FAA testing system holds the live question bank, and a site offering to sell you "the real questions" is offering something it does not have. What we can do is write to the same published specification the exam is built from &mdash; and show our work on every answer.</p>
@@ -81,7 +90,7 @@
     <a href="./mock-exam.html">Mock Exam</a>
     <a href="./study-guide/index.html">Study Guide</a>
     <a href="./free-mock-exam-pdf.html">Free PDF</a>
-    <a href="./premium.html">Premium</a>
+    <a data-cta="footer_premium" href="./premium.html">Premium</a>
     <a href="./about.html">About</a>
     <a href="./contact.html">Contact</a>
     <a href="./privacy.html">Privacy</a>
@@ -89,5 +98,21 @@
   </div>
   <p class="legal">Part107Quiz.com is an independent study resource and is not affiliated with, endorsed by, or sponsored by the Federal Aviation Administration (FAA) or any government agency. Question content is original and based on publicly available FAA source material (14 CFR Part 107, the Remote Pilot ACS, and FAA study guides). Always verify current regulations at faa.gov before you fly. © 2026 Part107Quiz.com</p>
 </div></footer>
+<div class="cookie-note" id="cookieBanner" role="region" aria-label="Cookie notice" hidden>
+  <span>We use Google Analytics cookies; your quiz scores are saved in your browser's local storage. <a href="./privacy.html">Privacy Policy</a></span>
+  <button type="button" id="cookieOkBtn">OK</button>
+</div>
+<script>
+(function () {
+  var b = document.getElementById("cookieBanner"), ok = null;
+  try { ok = localStorage.getItem("cookieOk"); } catch (e) {}
+  if (!b || ok) return;
+  b.hidden = false;
+  document.getElementById("cookieOkBtn").onclick = function () {
+    b.hidden = true;
+    try { localStorage.setItem("cookieOk", "1"); } catch (e) {}
+  };
+})();
+</script>
 </body>
 </html>
