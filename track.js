@@ -1,10 +1,7 @@
 /* Conversion tracking for part107quiz.com
    -------------------------------------------------------------------------
-   Added 2026-10-03, adapted from the sister site's track.js. The Premium Pack
-   made its first sale on 2026-10-03 and the site had no analytics at all, so
-   nobody could say which page, link or quiz result the buyer came through.
-   GA4 property: G-CBZ8Y19RJ0 (its own property - the RedSeal one is separate
-   so neither site's user counts are mixed into the other's).
+   Sends GA4 events (through the gtag snippet in each page's head) that say
+   which page, link or quiz result led a visitor to the Premium Pack.
 
    How the funnel is built on this site: the ONLY Ko-fi links are the two buy
    buttons on premium.html (their href is filled in from config.js
@@ -47,8 +44,8 @@
     } catch (e) { /* analytics must never break the page */ }
   }
 
-  /* Ko-fi product id -> product. The shop is shared with the sister site, so
-     an unknown id is reported as "unknown", never guessed. */
+  /* Ko-fi product id -> product. Any other id is reported as "unknown",
+     never guessed. */
   var PRODUCTS = { "b74b8f7ec3": "p107_premium" };
 
   /* Nav and footer appear on every page; an impression there says nothing. */
@@ -116,15 +113,22 @@
       linkType = m ? "product" : "shop";
       product = m ? (Object.prototype.hasOwnProperty.call(PRODUCTS, m[1]) ? PRODUCTS[m[1]] : "unknown") : "shop";
     }
-    /* The price is in the button text ("... - CA$29 (≈ US$21)"). One CA$
-       amount is a price; none, or two different ones, report null. */
-    var text = a.textContent || "";
-    var prices = text.match(/CA\$\s*\d+(?:\.\d{2})?/g) || [];
+    /* An in-content link reads just "Premium Pack" and states the price in
+       the sentence around it, so it carries data-price="29" (CA$), which wins.
+       Otherwise the price is in the link text ("... - CA$29 (≈ US$21)"): one
+       CA$ amount is a price; none, or two different ones, report null. */
     var price = null;
-    for (var i = 0; i < prices.length; i++) {
-      var v = parseFloat(prices[i].replace(/[^\d.]/g, ""));
-      if (price === null) price = v;
-      else if (v !== price) { price = null; break; }
+    var tagged = parseFloat((a.getAttribute && a.getAttribute("data-price")) || "");
+    if (isFinite(tagged) && tagged > 0) {
+      price = tagged;
+    } else {
+      var text = a.textContent || "";
+      var prices = text.match(/CA\$\s*\d+(?:\.\d{2})?/g) || [];
+      for (var i = 0; i < prices.length; i++) {
+        var v = parseFloat(prices[i].replace(/[^\d.]/g, ""));
+        if (price === null) price = v;
+        else if (v !== price) { price = null; break; }
+      }
     }
     return {
       kind: kind,

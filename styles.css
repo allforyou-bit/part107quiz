@@ -319,5 +319,8 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
 .cookie-note { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 18px; padding: 12px 16px; background: var(--navy); color: #fff; font-size: .85rem; line-height: 1.5; box-shadow: 0 -2px 12px rgba(11, 37, 69, .25); }
 .cookie-note[hidden] { display: none; }
 .cookie-note a { color: #ffd29a; }
-.cookie-note button { background: var(--orange); color: #fff; border: 0; border-radius: 8px; padding: 8px 20px; font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; }
-.cookie-note button:hover { background: var(--orange-dark); }
+/* OK button: navy on orange is 6.2:1 (white on this orange was 2.5:1, below
+   WCAG AA's 4.5:1); navy on the lighter hover orange is 7.6:1. */
+.cookie-note button { background: var(--orange); color: var(--navy); border: 0; border-radius: 8px; padding: 8px 20px; font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.cookie-note button:hover { background: #ffa033; }
+.cookie-note button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
