@@ -65,6 +65,7 @@ premise, ambiguous stem) were removed rather than patched.
 - [Part 107 test cost and pass rate](https://part107quiz.com/study-guide/part-107-cost-and-pass-rate.html)
 - [Airspace classes explained](https://part107quiz.com/study-guide/airspace-classes-explained.html)
 - [How to read a sectional chart](https://part107quiz.com/study-guide/how-to-read-a-sectional-chart.html)
+- [Part 107 test changes from October 26, 2026: on-screen images from current sectional charts](https://part107quiz.com/study-guide/part-107-test-changes-october-2026.html)
 - [LAANC authorization guide](https://part107quiz.com/study-guide/laanc-guide.html)
 - [Aviation weather for drone pilots](https://part107quiz.com/study-guide/weather-for-drone-pilots.html)
 - [Night flying rules](https://part107quiz.com/study-guide/night-flying-rules.html)
