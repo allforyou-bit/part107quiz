@@ -56,6 +56,7 @@ premise, ambiguous stem) were removed rather than patched.
 - [Operations](https://part107quiz.com/operations.html) — 46 questions
 - [Night operations](https://part107quiz.com/night-operations.html) — 9 questions
 - [Remote ID](https://part107quiz.com/remote-id.html) — 9 questions
+- [Sectional chart image practice](https://part107quiz.com/chart-image-practice.html) — 25 image-based questions on excerpts of current FAA sectional charts (September 3, 2026 editions), each with an explanation
 - [Free 50-question practice exam PDF](https://part107quiz.com/free-mock-exam-pdf.html) with answer key and explanations
 
 ## Study guides
