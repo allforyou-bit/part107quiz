@@ -44,6 +44,7 @@
   <h2>Reading a METAR</h2>
   <p>A METAR is a routine surface weather observation: the actual current conditions at an airport, typically updated once an hour. Reporting stations encode those conditions into a compact string of letters and numbers. Here's an illustrative example formatted like a METAR for Austin-Bergstrom International Airport (remarks omitted):</p>
   <p><strong>KAUS 121853Z 24015G25KT 10SM SCT045 32/18 A2992</strong></p>
+  <div class="table-scroll">
   <table>
   <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
   <tbody>
@@ -56,6 +57,7 @@
   <tr><td>A2992</td><td>Altimeter setting 29.92 inHg</td></tr>
   </tbody>
   </table>
+  </div>
   <p>Two details are easy to mix up on the exam. First, wind direction is always where the wind is coming <em>from</em>, not where it's blowing toward — so 240° means the wind is out of the southwest. Second, cloud heights in a METAR are reported in hundreds of feet AGL, so SCT045 means 4,500 feet above ground level, not sea level and not 45 feet. A "G" in the wind group always flags a gust value, as in G25 above.</p>
 
   <h2>TAFs</h2>
@@ -65,6 +67,7 @@
   <p>Density altitude is pressure altitude corrected for non-standard temperature — essentially, how "thin" the air actually behaves compared to the standard atmosphere (15°C and 29.92 inHg at sea level). Hot temperatures, high field elevation, and high humidity all push density altitude up, meaning the air is thinner than raw altitude numbers would suggest. Thinner air gives each propeller less mass to push against, which reduces thrust and shortens battery endurance, since the motors work harder to produce the same lift. A multirotor that climbs briskly on a cool morning near sea level can feel noticeably sluggish, and drain its battery faster, launching from a hot, high-elevation site in the afternoon. For more on how conditions like this affect your aircraft in flight, see our guide to <a href="../loading-performance.html">loading and performance</a>.</p>
 
   <h2>Stable vs Unstable Air</h2>
+  <div class="table-scroll">
   <table>
   <thead><tr><th>Factor</th><th>Stable air</th><th>Unstable air</th></tr></thead>
   <tbody>
@@ -74,6 +77,7 @@
   <tr><td>Precipitation</td><td>Steady</td><td>Showery</td></tr>
   </tbody>
   </table>
+  </div>
   <p>A temperature inversion is an extreme, very stable case, and it's notorious for trapping smoke and haze near the surface — visibility can be poor even when there's no rain anywhere in the forecast. Unstable air tends to give better visibility between showers, at the cost of a bumpier ride while you're airborne.</p>
 
   <h2>Fog</h2>

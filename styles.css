@@ -11,6 +11,7 @@
   --sky-soft: #e3f1fb;
   --orange: #fb8500;
   --orange-dark: #d97400;
+  --orange-hover: #ffa033; /* hover fill for orange buttons: navy text on it is 7.6:1 */
   --green: #1b9e4b;
   --green-soft: #e4f5ea;
   --red: #d64545;
@@ -62,10 +63,16 @@ a { color: var(--navy-3); }
   padding: 6px 4px;
 }
 .nav-links a:hover { color: #fff; }
+/* Orange buttons carry navy text: navy on #fb8500 is 6.2:1 and navy on the
+   lighter hover orange is 7.6:1. White on this orange was 2.5:1 (hover white
+   on #d97400 3.3:1), below WCAG AA's 4.5:1. Same pair as the analytics
+   notice's OK button. Keyboard focus gets a white ring inside a navy one so
+   it shows on the navy header and hero as well as on white cards. */
 .nav-links a.btn-cta {
-  background: var(--orange); color: #fff; padding: 8px 14px; border-radius: 999px;
+  background: var(--orange); color: var(--navy); padding: 8px 14px; border-radius: 999px;
 }
-.nav-links a.btn-cta:hover { background: var(--orange-dark); }
+.nav-links a.btn-cta:hover { background: var(--orange-hover); color: var(--navy); }
+.nav-links a.btn-cta:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; box-shadow: 0 0 0 2px #fff; }
 
 /* ---------- hero ---------- */
 .hero {
@@ -83,8 +90,9 @@ a { color: var(--navy-3); }
   display: inline-block; text-decoration: none; font-weight: 700; border-radius: 10px;
   padding: 13px 26px; font-size: 1.02rem; border: none; cursor: pointer; transition: all .15s;
 }
-.btn-primary { background: var(--orange); color: #fff; }
-.btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+.btn-primary { background: var(--orange); color: var(--navy); } /* contrast note above .nav-links a.btn-cta */
+.btn-primary:hover { background: var(--orange-hover); color: var(--navy); transform: translateY(-1px); }
+.btn-primary:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; box-shadow: 0 0 0 2px #fff; }
 .btn-ghost { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.35); margin-left: 10px; }
 .btn-ghost:hover { background: rgba(255,255,255,.2); }
 .btn-blue { background: var(--navy-3); color: #fff; }
@@ -187,6 +195,11 @@ a.card-link { text-decoration: none; }
 .prose table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: .93rem; }
 .prose th, .prose td { border: 1px solid var(--line); padding: 9px 12px; text-align: left; vertical-align: top; }
 .prose th { background: var(--sky-soft); color: var(--navy); }
+/* Tables wider than a phone scroll inside this box instead of widening the
+   whole page (several were 330-430px wide at a 360px viewport). The box takes
+   the table's outer margins, so spacing on wide screens is unchanged. */
+.table-scroll { overflow-x: auto; margin: 14px 0 20px; }
+.prose .table-scroll > table { margin: 0; }
 .prose .tip { border-left: 4px solid var(--orange); background: #fff7ec; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 16px 0; font-size: .95rem; }
 .prose .updated { color: var(--muted); font-size: .85rem; margin-bottom: 20px; }
 .breadcrumb { font-size: .87rem; color: var(--muted); margin-top: 22px; }
@@ -323,5 +336,5 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
 /* OK button: navy on orange is 6.2:1 (white on this orange was 2.5:1, below
    WCAG AA's 4.5:1); navy on the lighter hover orange is 7.6:1. */
 .cookie-note button { background: var(--orange); color: var(--navy); border: 0; border-radius: 8px; padding: 8px 20px; font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; }
-.cookie-note button:hover { background: #ffa033; }
+.cookie-note button:hover { background: var(--orange-hover); }
 .cookie-note button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
