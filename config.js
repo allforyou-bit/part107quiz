@@ -26,7 +26,8 @@ window.P107_CONFIG = {
     mlForm: ""
   },
   products: {
-    /* Premium Pack v1.1 (5 mock exams + 385-question bank, CA$29).
+    /* Premium Pack v1.2 (5 mock exams + 385-question bank + 56 chart image
+       questions, CA$29; Ko-fi file swapped 2026-10-06).
        Paste the Ko-fi/Payhip product URL to open the store —
        premium.html shows "coming soon" until this is set. */
     premiumUrl: "https://ko-fi.com/s/b74b8f7ec3"

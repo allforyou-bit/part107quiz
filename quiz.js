@@ -275,7 +275,7 @@
       ? (pass ? "Want more full-length rehearsals before test day?" : "Want more full-length practice to close the gap?")
       : (pass ? "Ready to lock it in before test day?" : "Want a structured way to close the gap?")));
     var freeText = "Download the free 50-question practice exam PDF with a full answer key and explanations — study anywhere, no internet needed.";
-    var paidText = "<strong>Premium Pack:</strong> 5 full 60-question mocks + 385-question bank (212 not on this site), CA$29 (≈ US$21). Printable PDFs, one-time purchase.";
+    var paidText = "<strong>Premium Pack:</strong> 5 full 60-question mocks + 385-question bank (212 not on this site) + 56 sectional chart image questions, CA$29 (≈ US$21). Printable PDFs, one-time purchase.";
     var dl = el("a", "btn " + (premiumFirst ? "btn-ghost" : "btn-primary"), "Get the Free 50-Question PDF");
     dl.href = base + "/free-mock-exam-pdf.html";
     var buy = null;

@@ -76,9 +76,14 @@ premise, ambiguous stem) were removed rather than patched.
 
 ## Paid option
 
-An optional [Premium Pack](https://part107quiz.com/premium.html) (CA$29, PDF)
-adds five non-repeating 60-question mock exams and a larger study bank. Every
-practice test, explanation and study guide on the site stays free.
+An optional [Premium Pack](https://part107quiz.com/premium.html) (CA$29, PDF,
+edition v1.2 of October 6, 2026) adds five non-repeating 60-question mock
+exams, a 385-question study bank (the 173 free questions plus 212 more) and 56
+image-based questions on excerpts of FAA sectional charts (September 3, 2026
+editions): the 25 free chart questions plus 31 more. The chart questions are
+the site's own practice in the image-based format the FAA announced for
+October 26, 2026, not actual FAA test questions. Every practice test,
+explanation and study guide on the site stays free.
 
 ## Contact
 
