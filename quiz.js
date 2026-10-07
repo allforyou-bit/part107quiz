@@ -288,7 +288,6 @@
       row.appendChild(el("span", null, a.ok + " / " + a.n + " (" + Math.round(a.ok / a.n * 100) + "%)"));
       bd.appendChild(row);
     });
-    shell.appendChild(bd);
 
     /* CTA — free lead magnet always; the Premium Pack whenever the store URL
        (products.premiumUrl) is configured. The button links to premium.html,
@@ -328,7 +327,12 @@
       if (buy) wrap.appendChild(buy);
     }
     cta.appendChild(wrap);
+    /* The offer comes straight after the score, then the per-area breakdown
+       and the review of misses (2026-10-07). Below the breakdown, its Premium
+       button opened 920-1009 px down at 375x812: off the first screen of
+       every phone result. */
     shell.appendChild(cta);
+    shell.appendChild(bd);
 
     /* review of misses */
     var wrong = [];

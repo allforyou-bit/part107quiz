@@ -12,8 +12,8 @@
 </script>
 <script src="./track.js" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 107 Image-Based Chart Questions — 25 Free Sectional Chart Practice Questions — Part 107 Quiz</title>
-<meta name="description" content="Free Part 107 practice: 25 image-based questions on excerpts of current FAA sectional charts (September 3, 2026 editions), with instant feedback, an explanation for every answer and a score at the end.">
+<title>Part 107 Sectional Chart Practice: 25 Free Image-Based Questions</title>
+<meta name="description" content="Free Part 107 practice: 25 image-based questions on FAA sectional chart excerpts (September 3, 2026 editions), with an explanation for every answer.">
 <link rel="canonical" href="https://part107quiz.com/chart-image-practice.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Part 107 Quiz">
@@ -95,6 +95,7 @@
 .cq-score-box h2 { color: var(--navy); font-size: 1.3rem; }
 .cq-score-box .score-big { color: var(--navy); margin-top: 6px; }
 .cq-status { color: var(--muted); margin-top: 6px; }
+.cq-detail .breakdown { margin-top: 0; border-top: 0; }
 .cq-missed { font-size: .92rem; color: var(--muted); margin-top: 6px; }
 .cq-missed a { margin-right: 4px; white-space: nowrap; }
 .cq-about { max-width: 780px; margin: 10px auto 40px; }
@@ -117,7 +118,7 @@
   <div class="nav-links">
     <a href="./mock-exam.html">Mock Exam</a>
     <a href="./index.html#practice">Practice Tests</a>
-    <a href="./study-guide/index.html">Study Guide</a>
+    <a href="./study-guide/">Study Guide</a>
     <a data-cta="nav_premium" href="./premium.html">Premium</a>
     <a class="btn-cta" href="./free-mock-exam-pdf.html">Free 50-Q PDF</a>
   </div>
@@ -640,16 +641,21 @@
     <div id="cq-score" hidden>
       <div class="score-big" id="cq-pct"></div>
       <p class="quiz-note" id="cq-right"></p>
-      <div class="breakdown" id="cq-breakdown"></div>
-      <p class="cq-missed" id="cq-missed"></p>
-      <div class="quiz-actions"><button type="button" class="btn btn-blue" id="cq-again">Try again (new shuffle)</button></div>
     </div>
   </div>
+  <!-- The offer comes straight after the score line, then the topic breakdown
+       and the missed-question links (2026-10-07). After them it opened 1162 px
+       down at 375x812 and 887-911 px at 1280x800, off the first screen. -->
   <div class="cta-box">
     <h3>More chart questions, and the rest of the test</h3>
     <p>This free set stays free. The Premium Pack (CA$29, about US$21) adds 31 more image-based questions on sectional chart excerpts beyond these 25 (its chart file has all 56, these 25 marked), plus five 60-question mock exams and a 385-question study bank covering the five knowledge areas, as PDFs.</p>
     <a class="btn btn-primary" data-cta="chart_image_practice_end" data-price="29" href="./premium.html">See the Premium Pack — CA$29</a>
     <a class="btn btn-ghost" href="./mock-exam.html">Free 60-question mock exam</a>
+  </div>
+  <div class="cq-score-box cq-detail cq-js-only" id="cq-detail" hidden>
+    <div class="breakdown" id="cq-breakdown"></div>
+    <p class="cq-missed" id="cq-missed"></p>
+    <div class="quiz-actions"><button type="button" class="btn btn-blue" id="cq-again">Try again (new shuffle)</button></div>
   </div>
 </section>
 
@@ -664,7 +670,7 @@
   <div class="foot-links">
     <a href="./index.html">Home</a>
     <a href="./mock-exam.html">Mock Exam</a>
-    <a href="./study-guide/index.html">Study Guide</a>
+    <a href="./study-guide/">Study Guide</a>
     <a href="./free-mock-exam-pdf.html">Free PDF</a>
     <a data-cta="footer_premium" href="./premium.html">Premium</a>
     <a href="./about.html">About</a>
@@ -705,6 +711,7 @@
   var state = [], answered = 0;
   var statusEl = document.getElementById("cq-status");
   var scoreEl = document.getElementById("cq-score");
+  var detailEl = document.getElementById("cq-detail"); /* breakdown, misses, Try again: below the offer */
 
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) {
@@ -735,6 +742,7 @@
       state.push(null);
     });
     scoreEl.hidden = true;
+    detailEl.hidden = true;
     updateStatus();
   }
 
@@ -827,6 +835,7 @@
       ms.textContent = "No misses on this attempt.";
     }
     scoreEl.hidden = false;
+    detailEl.hidden = false;
     try {
       document.dispatchEvent(new CustomEvent("p107:finished", { detail: {
         mode: "chart-image", topics: ["chart-image-practice"], pct: pct, right: right,
