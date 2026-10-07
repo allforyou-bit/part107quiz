@@ -84,6 +84,12 @@ a { color: var(--navy-3); }
   .nav-links { flex-wrap: nowrap; min-width: 0; overflow-x: auto; padding: 4px; scrollbar-width: none; }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a { flex-shrink: 0; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
+  /* One row shows only one or two links before a swipe, so on narrow screens the strip opens with
+     Mock Exam, Premium and the free PDF; Practice Tests and Study Guide follow. */
+  .nav-links a { order: 3; }
+  .nav-links a[href$="mock-exam.html"] { order: 0; }
+  .nav-links a[data-cta="nav_premium"] { order: 1; }
+  .nav-links a.btn-cta { order: 2; }
 }
 
 /* ---------- hero ---------- */
