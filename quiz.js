@@ -106,6 +106,34 @@
     return "p107-best-" + (page.mode === "mock" ? "mock" : page.topics.join("-"));
   }
 
+  /* ---------- screen position ---------- */
+  /* Each question and the result start with the quiz card at the top of the
+     screen, just under the sticky header (the offset goTo() uses on
+     chart-image-practice.html). Until 2026-10-07 they scrolled to the top of
+     the PAGE, so the page heading and intro came back above every question:
+     at 375x812 the question text started 559-710 px down and no question had
+     all its options on screen, and every result screen opened with its
+     Premium Pack button off screen (810-922 px down at 1280x800, 1287-1394 px
+     at 375x812). */
+  function toQuiz() {
+    var hdr = document.querySelector(".site-header");
+    var off = hdr ? hdr.getBoundingClientRect().height : 0;
+    var y = root.getBoundingClientRect().top + (window.pageYOffset || 0) - off - 12;
+    try { window.scrollTo({ top: y, behavior: "smooth" }); } catch (e) { window.scrollTo(0, y); }
+  }
+
+  /* The analytics notice (#cookieBanner) is fixed to the bottom of the screen,
+     above everything, until OK is pressed. On a first visit it sat on the
+     lower answer options and the Next / Finish button: with real clicks it
+     took 15-30 of the 74-120 option and Next clicks in a full test at 375x812,
+     and 31 of 120 in the mock at 1280x800. Once a test starts it is hidden for
+     the rest of this page view. Nothing is stored, so it shows again on the
+     next page until OK is pressed. */
+  function hideNotice() {
+    var b = document.getElementById("cookieBanner");
+    if (b) b.hidden = true;
+  }
+
   /* ---------- screens ---------- */
   function renderStart() {
     root.innerHTML = "";
@@ -128,6 +156,7 @@
   }
 
   function start() {
+    hideNotice();
     set = buildQuestionSet(page, window.P107_BANK);
     cur = 0; picks = new Array(set.length).fill(null);
     feedbackMode = page.mode !== "mock";
@@ -185,6 +214,7 @@
     acts.id = "q-acts";
     shell.appendChild(acts);
     root.appendChild(shell);
+    toQuiz();
   }
 
   function pick(i, btn, optsEl) {
@@ -223,7 +253,6 @@
   function next() {
     if (cur === set.length - 1) { finish(); return; }
     cur++; renderQ();
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function finish() {
@@ -322,7 +351,7 @@
 
     var acts = el("div", "quiz-actions");
     var again = el("button", "btn btn-blue", "Try Again (new shuffle)");
-    again.onclick = function () { start(); window.scrollTo(0, 0); };
+    again.onclick = function () { start(); }; /* renderQ() brings question 1 to the top */
     acts.appendChild(again);
     shell.appendChild(acts);
     root.appendChild(shell);
@@ -338,7 +367,7 @@
       } }));
     } catch (e) { /* analytics must never break the quiz */ }
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    toQuiz();
   }
 
   /* ---------- boot ---------- */

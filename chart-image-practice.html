@@ -754,9 +754,22 @@
     return -1;
   }
 
+  /* The analytics notice (#cookieBanner) is fixed to the bottom of the screen,
+     above everything, until OK is pressed. On a first visit it sat on the
+     lower answer choices and Next links of the card just brought to the top:
+     with real clicks it took 18 of 50 at 375x812 and 6 of 50 at 1280x800.
+     Hidden for the rest of this page view once the first answer is in, as
+     quiz.js does when a test starts. Nothing is stored, so it shows again on
+     the next page until OK is pressed. */
+  function hideNotice() {
+    var b = document.getElementById("cookieBanner");
+    if (b) b.hidden = true;
+  }
+
   function answer(card, btn) {
     var n = cards.indexOf(card);
     if (n < 0 || state[n] !== null) return;
+    hideNotice();
     var btns = buttonsOf(card);
     var right = null;
     btns.forEach(function (b) {
