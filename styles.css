@@ -374,6 +374,20 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
   .hero .test-change-note { margin: -20px auto 10px; }
 }
 
+/* index.html hero on phones (2026-10-14): the mock exam button comes straight
+   after the heading; the intro paragraph and the badges follow it. In page
+   order the button sat under them: 648-701 px at 360x740, under the analytics
+   notice (top 608) on a first visit, and 693-773 px at 320x640, below the
+   first screen. Same pattern as .premium-hero above; desktop is unchanged. */
+@media (max-width: 560px) {
+  .home-hero .container { display: flex; flex-direction: column; align-items: center; }
+  .home-hero .container > * { order: 3; }
+  .home-hero .container > .test-change-note { order: 0; }
+  .home-hero .container > h1 { order: 1; }
+  .home-hero .container > .btn { order: 2; margin: 4px 0; }
+  .home-hero .container > p.sub { margin-top: 18px; }
+}
+
 /* Analytics notice (2026-10-03). Shown until OK is pressed; the choice is kept
    in localStorage "cookieOk". See privacy.html "Analytics". */
 .cookie-note { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 18px; padding: 12px 16px; background: var(--navy); color: #fff; font-size: .85rem; line-height: 1.5; box-shadow: 0 -2px 12px rgba(11, 37, 69, .25); }
