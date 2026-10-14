@@ -388,6 +388,19 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
   .home-hero .container > p.sub { margin-top: 18px; }
 }
 
+/* mock-exam.html on phones (2026-10-14): the mock's start card comes right
+   after the heading and the intro paragraph follows it. In page order the
+   Start Mock Exam button sat under a 237 px paragraph, 675-720 px at 360x740,
+   under the analytics notice (top 608) on a first visit. mock-exam.html is
+   the most-clicked page from Bing. Desktop and tablet are unchanged. */
+@media (max-width: 560px) {
+  .mock-main { display: flex; flex-direction: column; }
+  .mock-main > * { order: 3; }
+  .mock-main > .mock-head { order: 0; }
+  .mock-main > #quiz-root { order: 1; }
+  .mock-main > .mock-intro { order: 2; margin-top: 4px !important; }
+}
+
 /* Analytics notice (2026-10-03). Shown until OK is pressed; the choice is kept
    in localStorage "cookieOk". See privacy.html "Analytics". */
 .cookie-note { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 18px; padding: 12px 16px; background: var(--navy); color: #fff; font-size: .85rem; line-height: 1.5; box-shadow: 0 -2px 12px rgba(11, 37, 69, .25); }
