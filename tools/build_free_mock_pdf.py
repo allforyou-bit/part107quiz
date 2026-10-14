@@ -157,9 +157,11 @@ def build():
     # ---- answer key ----
     story.append(PageBreak())
     story.append(Paragraph("Answer Key &amp; Explanations", h1))
+    # 2026-10-14: was "85%+ (43 correct) means you're comfortably ready", a
+    # readiness promise no practice score can make. Now the margin as a fact.
     story.append(Paragraph(
         "Score: correct ÷ 50. The FAA pass mark is 70% (35 correct). "
-        f"85%+ (43 correct) means you're comfortably ready. More free practice: https://{SITE}", sub))
+        f"85%+ (43 correct) leaves a comfortable margin. More free practice: https://{SITE}", sub))
     story.append(Spacer(1, 6))
     for i, q in enumerate(final, 1):
         block = [
@@ -179,6 +181,9 @@ def build():
     # Premium Pack, so a reader who finished it had no way to learn the pack
     # existed. Everything before this page is unchanged by this block: the
     # questions are drawn from the seeded RNG above, before any story is built.
+    # 2026-10-14: the box described only the mocks and the bank. It now says
+    # what v1.2 (2026-10-06) is: plus 56 sectional chart image questions, 25 of
+    # them free on the site, with a clickable link to those 25.
     story.append(PageBreak())
     story.append(Paragraph("Want more full-length practice?", h1))
     story.append(Paragraph(f"An optional paid add-on from {SITE}", sub))
@@ -191,13 +196,18 @@ def build():
                             fontSize=14, leading=18, textColor=NAVY,
                             spaceAfter=10)
     box = Table([[[
-        Paragraph("Part 107 Premium Pack", ptitle),
+        Paragraph("Part 107 Premium Pack (v1.2)", ptitle),
         Paragraph("5 more full 60-question mock exams, drawn at the FAA's area "
                   "weighting in effect since September 29, 2025. No question "
                   "repeats across the five exams.", pbullet, bulletText="•"),
         Paragraph("A 385-question study bank with the answer, a plain-English "
                   "explanation and the regulation reference under every question. "
                   "212 of those questions are not on the free site.",
+                  pbullet, bulletText="•"),
+        Paragraph("56 image-based questions on excerpts of FAA sectional charts "
+                  "(editions dated September 3, 2026), one per page, with an "
+                  "answer key and explanations. 31 are only in the pack; the "
+                  "other 25 are the free chart image practice on the site.",
                   pbullet, bulletText="•"),
         Paragraph("Printable PDFs. One-time CA$29 (about US$21), charged in "
                   "Canadian dollars. No subscription.", pbullet,
@@ -213,6 +223,14 @@ def build():
     ]))
     story.append(box)
     story.append(Spacer(1, 12))
+    story.append(Paragraph(
+        "The FAA says image-based questions from current sectional charts join "
+        "the Part 107 test on October 26, 2026. The pack's chart questions are "
+        "our own practice in that format, not actual FAA test questions. "
+        "Try the 25 free ones: "
+        f'<a href="https://{SITE}/chart-image-practice.html" color="#1d4e89">'
+        f"<u>{SITE}/chart-image-practice.html</u></a>",
+        pbody))
     story.append(Paragraph(
         "Details and sample pages: "
         f'<a href="https://{SITE}/premium.html" color="#1d4e89"><u>{SITE}/premium.html</u></a>',

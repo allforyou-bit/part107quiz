@@ -345,12 +345,33 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
 .sample-pages figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px; box-shadow: var(--shadow); }
 .sample-pages img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
 .sample-pages figcaption { color: var(--muted); font-size: .85rem; line-height: 1.5; margin-top: 8px; }
+/* Third sample (2026-10-14, a chart image question page): centred on its own
+   row at one column's width where the grid shows two columns (from 700 px the
+   grid always has two). Below that it simply flows as the next cell. */
+@media (min-width: 700px) {
+  .sample-pages .sample-chart { grid-column: 1 / -1; justify-self: center; width: calc((100% - 16px) / 2); }
+}
 /* premium.html hero on phones (2026-10-07): the priced buy button comes
    straight after the intro and the badges move below it. In page order the
    button sat under six badges, 891 px down at 375x812, off the first screen. */
 @media (max-width: 560px) {
   .premium-hero .container { display: flex; flex-direction: column; align-items: center; }
   .premium-hero .hero-badges { order: 1; margin: 22px 0 0; }
+}
+
+/* Dated line on the October 26, 2026 test change, above the h1 on index.html
+   and mock-exam.html (2026-10-14). Plain text with two links: no banner
+   colours, no countdown. It takes back part of the space above the heading so
+   that, at 375x812, the home page's mock exam button and the mock's start
+   button stay above the analytics notice (top edge 680 px) on a first visit. */
+.test-change-note { font-size: .88rem; line-height: 1.5; }
+.hero .test-change-note { color: #c9dcef; max-width: 760px; margin: 0 auto 14px; }
+.hero .test-change-note strong, .hero .test-change-note a { color: #fff; }
+.hero .test-change-note a { font-weight: 600; }
+.test-change-note.on-light { color: var(--ink); margin: -14px 0 6px; }
+.test-change-note.on-light strong { color: var(--navy); }
+@media (max-width: 560px) {
+  .hero .test-change-note { margin: -20px auto 10px; }
 }
 
 /* Analytics notice (2026-10-03). Shown until OK is pressed; the choice is kept
