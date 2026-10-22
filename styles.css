@@ -426,6 +426,9 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
   .topic-main > #quiz-root { margin-top: 26px; }
   .topic-main > #quiz-root > .quiz-shell { margin-top: 0; }
 }
+/* One line of related links under a topic page heading (airspace.html). */
+.topic-links { font-size: .9rem; line-height: 1.5; color: var(--muted); margin: 8px 0 0; }
+.topic-links a { color: var(--navy-3); font-weight: 600; }
 
 /* mock-exam.html on phones (2026-10-14): the mock's start card comes right
    after the heading and the intro paragraph follows it. In page order the
