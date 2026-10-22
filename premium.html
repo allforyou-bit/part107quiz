@@ -42,10 +42,10 @@
       <span class="badge">✔ Updated for the FAA's 2025 test weighting</span>
       <span class="badge">✔ One-time purchase</span>
     </div>
-    <a class="btn btn-primary" id="buy-top" data-cta="premium_page_top" data-premium-buy href="#" hidden>Get the Premium Pack — CA$29 (≈ US$21)</a>
+    <a class="btn btn-primary" id="buy-top" data-cta="premium_page_top" data-premium-buy href="https://ko-fi.com/s/b74b8f7ec3">Get the Premium Pack — CA$29 (≈ US$21)</a>
     <a class="btn btn-ghost" href="./free-mock-exam-pdf.html">Try the free 50-question PDF first</a>
-    <p class="buy-note" data-premium-note hidden>Checkout opens on Ko-fi under the shop name &ldquo;Red Seal Exam Prep&rdquo; (same publisher). Billed CA$29 &asymp; US$21.</p>
-    <p class="buy-note pay-note" data-premium-note hidden>Pay by card or PayPal &mdash; card payment usually works without a PayPal account.</p>
+    <p class="buy-note" data-premium-note>Checkout opens on Ko-fi under the shop name &ldquo;Red Seal Exam Prep&rdquo; (same publisher). Billed CA$29 &asymp; US$21.</p>
+    <p class="buy-note pay-note" data-premium-note>Pay by card or PayPal &mdash; card payment usually works without a PayPal account.</p>
     <p id="soon-top" class="sub" style="margin-top:14px" hidden>Opening soon — the free site isn't going anywhere in the meantime.</p>
   </div>
 </div>
@@ -107,9 +107,9 @@
     <div class="cta-box">
       <h3>Ready when you are</h3>
       <p>One-time CA$29 (about US$21 — charged in Canadian dollars). Instant download. The free site stays free either way.</p>
-      <a class="btn btn-primary" id="buy-bottom" data-cta="premium_page_bottom" data-premium-buy href="#" hidden>Get the Premium Pack — CA$29 (≈ US$21)</a>
-      <p class="buy-note" data-premium-note hidden>Checkout opens on Ko-fi under the shop name &ldquo;Red Seal Exam Prep&rdquo; (same publisher). Billed CA$29 &asymp; US$21.</p>
-      <p class="buy-note pay-note" data-premium-note hidden>Pay by card or PayPal &mdash; card payment usually works without a PayPal account.</p>
+      <a class="btn btn-primary" id="buy-bottom" data-cta="premium_page_bottom" data-premium-buy href="https://ko-fi.com/s/b74b8f7ec3">Get the Premium Pack — CA$29 (≈ US$21)</a>
+      <p class="buy-note" data-premium-note>Checkout opens on Ko-fi under the shop name &ldquo;Red Seal Exam Prep&rdquo; (same publisher). Billed CA$29 &asymp; US$21.</p>
+      <p class="buy-note pay-note" data-premium-note>Pay by card or PayPal &mdash; card payment usually works without a PayPal account.</p>
       <p id="soon-bottom" style="color:#c9dcef" hidden>Opening soon — grab the <a href="./free-mock-exam-pdf.html" style="color:#fff">free 50-question PDF</a> while you wait.</p>
     </div>
   </div>
@@ -132,19 +132,26 @@
 </div></footer>
 
 <script>
-/* Purchase gate: buttons appear only when config.js carries the store URL.
-   Until then the page renders as a "coming soon" preview with the free
-   funnel intact — no broken links, ever. */
+/* Purchase gate. The buy buttons and their checkout notes are in the HTML in
+   the store-open state, with the Ko-fi URL, so they work before this runs and
+   without JavaScript. Until 2026-10-22 they carried href="#" and the hidden
+   attribute until DOMContentLoaded, and .btn's display overrode hidden, so a
+   tap before then (or with config.js blocked) hit a dead "#" button. config.js
+   stays the switch: its premiumUrl is copied onto both buttons, and when it is
+   set to "" the buttons and notes are removed and the "opening soon" lines
+   shown. If config.js did not load at all, the page stays as written. */
 document.addEventListener("DOMContentLoaded", function () {
-  var c = window.P107_CONFIG || {};
-  var url = (c.products || {}).premiumUrl || "";
+  var c = window.P107_CONFIG;
+  if (!c || !c.products) return;
+  var url = c.products.premiumUrl || "";
   var buys = document.querySelectorAll("[data-premium-buy]");
   var soons = [document.getElementById("soon-top"),
                document.getElementById("soon-bottom")];
   if (url) {
-    buys.forEach(function (b) { b.href = url; b.hidden = false; });
-    document.querySelectorAll("[data-premium-note]").forEach(function (n) { n.hidden = false; });
+    buys.forEach(function (b) { b.href = url; });
   } else {
+    buys.forEach(function (b) { b.style.display = "none"; });
+    document.querySelectorAll("[data-premium-note]").forEach(function (n) { n.hidden = true; });
     soons.forEach(function (s) { if (s) s.hidden = false; });
   }
 });

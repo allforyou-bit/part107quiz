@@ -351,12 +351,25 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
 @media (min-width: 700px) {
   .sample-pages .sample-chart { grid-column: 1 / -1; justify-self: center; width: calc((100% - 16px) / 2); }
 }
-/* premium.html hero on phones (2026-10-07): the priced buy button comes
-   straight after the intro and the badges move below it. In page order the
-   button sat under six badges, 891 px down at 375x812, off the first screen. */
+/* premium.html hero on phones (2026-10-07, 2026-10-22): the priced buy button
+   comes straight after the heading, then its two checkout notes (the Ko-fi
+   shop name, card or PayPal), the free-PDF button, the badges and the intro.
+   In page order the button sat under six badges, 891 px down at 375x812 (moved
+   up on 10/07). With the intro above it, the notes were at 680-803 px at
+   375x812, under the analytics notice on a first visit (0 of 116 px showing),
+   so a phone buyer reached the "Red Seal Exam Prep" checkout without the line
+   that explains it, and the badges (the hero's only "PDF" and "one-time
+   purchase") started at 825 px. Desktop and tablet are unchanged. */
 @media (max-width: 560px) {
   .premium-hero .container { display: flex; flex-direction: column; align-items: center; }
-  .premium-hero .hero-badges { order: 1; margin: 22px 0 0; }
+  .premium-hero .container > * { order: 4; }
+  .premium-hero .container > h1 { order: 0; }
+  .premium-hero .container > #buy-top,
+  .premium-hero .container > .buy-note,
+  .premium-hero .container > #soon-top { order: 1; }
+  .premium-hero .container > .btn-ghost { order: 2; margin-top: 16px; }
+  .premium-hero .hero-badges { order: 3; margin: 22px 0 0; }
+  .premium-hero .container > p.sub { margin: 22px auto 0; }
 }
 
 /* Dated line on the October 26, 2026 test change, above the h1 on index.html
@@ -388,6 +401,32 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
   .home-hero .container > p.sub { margin-top: 18px; }
 }
 
+/* Topic practice pages on phones (2026-10-22): the quiz card, with its Start
+   Practice Test button, comes right after the heading, and the intro paragraph
+   follows it. In page order the button sat under the intro: on a first visit
+   at 375x812 it was 674-732 px down on regulations, operations, remote-id and
+   loading-performance, under the analytics notice (top 680), and a tap where
+   it showed landed on the notice, so the quiz did not start; at 360x740 all
+   seven pages were covered. Same pattern as .mock-main below. Desktop and
+   tablet are unchanged. */
+@media (max-width: 560px) {
+  .topic-main { display: flex; flex-direction: column; }
+  .topic-main > * { order: 3; }
+  .topic-main > .topic-head { order: 0; }
+  .topic-main > #quiz-root { order: 1; }
+  .topic-main > .topic-intro { order: 2; margin-top: 4px !important; }
+  .topic-main > .qa-jump { order: 2; }
+  /* full width: a flex item with auto side margins shrinks to its content, so a
+     short heading would otherwise sit centred between 420 and 560 px wide */
+  .topic-main > .topic-head, .topic-main > .topic-intro, .topic-main > #quiz-root { width: 100%; }
+  /* A flex item does not collapse its child's margin, so the card's 26 px top
+     margin would sit inside #quiz-root and every question and result would land
+     38 px under the header instead of the 12 px quiz.js toQuiz() aims for. The
+     gap moves outside the root. */
+  .topic-main > #quiz-root { margin-top: 26px; }
+  .topic-main > #quiz-root > .quiz-shell { margin-top: 0; }
+}
+
 /* mock-exam.html on phones (2026-10-14): the mock's start card comes right
    after the heading and the intro paragraph follows it. In page order the
    Start Mock Exam button sat under a 237 px paragraph, 675-720 px at 360x740,
@@ -399,6 +438,12 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
   .mock-main > .mock-head { order: 0; }
   .mock-main > #quiz-root { order: 1; }
   .mock-main > .mock-intro { order: 2; margin-top: 4px !important; }
+  /* (2026-10-22) as in .topic-main above: the card's top margin stayed inside
+     the flex item #quiz-root, so since 10/14 every mock question and the result
+     landed 38 px under the header on phones, not 12 (the result's Premium
+     button 684-764 px at 375x812, 741-821 at 360x740). */
+  .mock-main > #quiz-root { margin-top: 26px; }
+  .mock-main > #quiz-root > .quiz-shell { margin-top: 0; }
 }
 
 /* Analytics notice (2026-10-03). Shown until OK is pressed; the choice is kept

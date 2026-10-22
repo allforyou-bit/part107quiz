@@ -322,7 +322,15 @@
       wrap.appendChild(dl);
     } else {
       cta.appendChild(el("p", null, freeText));
-      if (buy) cta.appendChild(el("p", null, paidText));
+      /* On a topic result the Premium button is the second of the two, and on
+         phones it started at the bottom edge of the first screen (773-855 px
+         at 375x812, 39 of its 82 px showing), so offer_view(quiz_result) never
+         fired there without a scroll (2026-10-22). The pack's name in the
+         sentence above the buttons, which is on the first screen, now links to
+         premium.html too: same placement, same copy, same buttons. */
+      if (buy) cta.appendChild(el("p", null, paidText.replace("<strong>Premium Pack:</strong>",
+        '<strong><a data-cta="quiz_result" data-price="29" href="' + base +
+        '/premium.html" style="color:#fff">Premium Pack</a>:</strong>')));
       wrap.appendChild(dl);
       if (buy) wrap.appendChild(buy);
     }
