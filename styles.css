@@ -459,3 +459,8 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
 .cookie-note button { background: var(--orange); color: var(--navy); border: 0; border-radius: 8px; padding: 8px 20px; font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; }
 .cookie-note button:hover { background: var(--orange-hover); }
 .cookie-note button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Home hero: the one priced line, under the two hero buttons (data-cta="home_offer", 2026-10-24). */
+.hero p.hero-offer { color: #c9dcef; max-width: 640px; margin: 18px auto 0; font-size: .92rem; line-height: 1.5; }
+.hero p.hero-offer a { color: #ffd27a; font-weight: 800; text-decoration: underline; display: inline-block; padding: 10px 2px; margin: -10px 0; }
+@media (max-width: 560px) { .home-hero .container > p.hero-offer { order: 2; margin-top: 12px; } }
