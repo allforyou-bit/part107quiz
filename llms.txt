@@ -32,10 +32,9 @@ premise, ambiguous stem) were removed rather than patched.
   Community Advisory says this replaces the blueprint printed in the Remote
   Pilot ACS (FAA-S-ACS-10B) until the ACS is updated. Older study material
   that quotes ranges such as "Operations 35-45%" is out of date.
-- From October 26, 2026 the FAA says the UAG test will also include
-  image-based questions from current VFR charts that are not in the testing
-  supplement (Airman Testing Community Advisory, September 2026 Special
-  Edition). The supplement itself is FAA-CT-8080-2H.
+- The FAA set October 26, 2026 as the start date for image-based questions on
+  the UAG test from current VFR charts that are not in the testing supplement
+  (Airman Testing Community Advisory, September 2026 Special Edition). The supplement itself is FAA-CT-8080-2H.
 - Pass rate for the initial test, from FAA airman knowledge test statistics:
   82.96% in 2025 and 84.20% in 2024, down from above 92% in 2017-2020.
 - Retesting after a failure requires a 14-day wait (PSI bulletin).
@@ -56,7 +55,7 @@ premise, ambiguous stem) were removed rather than patched.
 - [Operations](https://part107quiz.com/operations.html) — 46 questions
 - [Night operations](https://part107quiz.com/night-operations.html) — 9 questions
 - [Remote ID](https://part107quiz.com/remote-id.html) — 9 questions
-- [Sectional chart image practice](https://part107quiz.com/chart-image-practice.html) — 25 image-based questions on excerpts of current FAA sectional charts (September 3, 2026 editions), each with an explanation
+- [Sectional chart image practice](https://part107quiz.com/chart-image-practice.html) — 25 image-based questions on excerpts of FAA sectional charts (September 3, 2026 editions), each with an explanation
 - [Free 50-question practice exam PDF](https://part107quiz.com/free-mock-exam-pdf.html) with answer key and explanations
 
 ## Study guides
