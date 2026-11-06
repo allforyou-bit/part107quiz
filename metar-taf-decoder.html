@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CBZ8Y19RJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CBZ8Y19RJ0');
+</script>
+<script src="./track.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>METAR &amp; TAF Decoder with Part 107 Practice Questions — Part 107 Quiz</title>
+<meta name="description" content="Paste any METAR or TAF and read every group in plain English, with the ceiling, flight category and the Part 107 visibility and cloud limits. Then practice on made-up reports.">
+<link rel="canonical" href="https://part107quiz.com/metar-taf-decoder.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛩</text></svg>">
+<link rel="stylesheet" href="./styles.css">
+<script>if(/[?&]embed=1(&|$)/.test(location.search))document.documentElement.classList.add("wx-embedded");</script>
+<style>
+  .wx-in { width: 100%; min-height: 6.2rem; font: 600 1rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 12px 14px; border: 2px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); resize: vertical; }
+  .wx-in:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+  .wx-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 4px; align-items: center; }
+  .wx-row .btn { min-height: 44px; padding: 10px 18px; }
+  .wx-chip { min-height: 44px; padding: 8px 14px; border: 2px solid var(--line); border-radius: 10px; background: #fff; color: var(--navy); font-weight: 700; cursor: pointer; font-size: .92rem; }
+  .wx-chip:hover { border-color: var(--sky); background: var(--sky-soft); }
+  .wx-chip:focus-visible, .wx-opt:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+  .wx-out table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95rem; }
+  .wx-out th, .wx-out td { border-bottom: 1px solid var(--line); padding: 9px 8px; text-align: left; vertical-align: top; }
+  .wx-out th { color: var(--navy); background: var(--sky-soft); }
+  .wx-out td.raw { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-weight: 700; white-space: nowrap; color: var(--navy); }
+  .wx-out td.lab { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+  .wx-out tr.per td { background: #fff7ec; font-weight: 700; color: var(--navy); }
+  .wx-sum { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+  .wx-sum span { background: var(--sky-soft); border-radius: 999px; padding: 6px 12px; font-weight: 700; color: var(--navy); font-size: .9rem; }
+  .wx-note { border-left: 4px solid var(--sky); background: var(--sky-soft); border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 8px 0; font-size: .95rem; }
+  .wx-note.warn { border-left-color: var(--red); background: var(--red-soft); }
+  .wx-note.ok { border-left-color: var(--green); background: var(--green-soft); }
+  .wx-note b { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; color: var(--navy); }
+  .wx-err { color: var(--red); font-weight: 700; margin: 8px 0; }
+  .wx-report { font: 700 1.05rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--navy); color: #fff; border-radius: 10px; padding: 12px 14px; word-break: break-word; margin: 8px 0; }
+  .wx-tag { font-size: .82rem; color: var(--muted); font-weight: 700; }
+  .wx-q { border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin: 14px 0; background: #fff; }
+  .wx-q .qt { font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .wx-opt { min-height: 44px; width: 100%; text-align: left; background: #fff; border: 2px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: .98rem; cursor: pointer; margin-bottom: 8px; color: var(--ink); line-height: 1.4; }
+  .wx-opt:hover { border-color: var(--sky); background: var(--sky-soft); }
+  .wx-opt.correct { border-color: var(--green); background: var(--green-soft); }
+  .wx-opt.wrong { border-color: var(--red); background: var(--red-soft); }
+  .wx-opt.correct::before { content: "\2713\00a0 Correct: "; font-weight: 800; color: var(--green); }
+  .wx-opt.wrong::before { content: "\2717\00a0 Your answer: "; font-weight: 800; color: var(--red); }
+  .wx-opt:disabled { cursor: default; }
+  .wx-score { font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+  .wx-embed textarea { width: 100%; min-height: 5rem; font: .8rem/1.4 ui-monospace, Menlo, Consolas, monospace; border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+  .wx-embed-bar { display: none; }
+  html.wx-embedded .site-header, html.wx-embedded .site-footer, html.wx-embedded .wx-page-only, html.wx-embedded .cookie-note { display: none !important; }
+  html.wx-embedded .wx-embed-bar { display: block; text-align: center; margin: 10px 0; }
+  html.wx-embedded .wx-embed-bar a { display: inline-flex; align-items: center; min-height: 44px; }
+  .wx-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin: 18px 0; }
+  .wx-card h2 { margin-top: 0; }
+  @media (max-width: 560px) { .wx-out td.lab { display: none; } .wx-out th.lab { display: none; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "METAR and TAF Decoder with Part 107 Practice",
+      "url": "https://part107quiz.com/metar-taf-decoder.html",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any (runs in the browser)",
+      "isAccessibleForFree": true,
+      "description": "Decodes METAR, SPECI and TAF reports into plain English, shows the ceiling, the flight category and the Part 107 visibility and cloud distance limits, and generates practice questions from made-up reports."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://part107quiz.com/" },
+        { "@type": "ListItem", "position": 2, "name": "METAR and TAF Decoder", "item": "https://part107quiz.com/metar-taf-decoder.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is the wind direction in a METAR true or magnetic?", "acceptedAnswer": { "@type": "Answer", "text": "True. The first three digits of the wind group are the direction the wind is blowing from, rounded to the nearest 10 degrees and referenced to true north (FAA AIM 7-1-29). 22015G25KT is wind from 220 degrees true at 15 knots, gusting to 25." } },
+        { "@type": "Question", "name": "What is the ceiling in a METAR or TAF?", "acceptedAnswer": { "@type": "Answer", "text": "The lowest broken (BKN) or overcast (OVC) layer, or the vertical visibility (VV) into an obscuration. FEW and SCT layers are not a ceiling. Cloud heights are three digits in hundreds of feet above ground level, so BKN008 is a ceiling of 800 feet." } },
+        { "@type": "Question", "name": "Is METAR visibility the same as Part 107 flight visibility?", "acceptedAnswer": { "@type": "Answer", "text": "No. A METAR gives the prevailing surface visibility at the airport. Part 107 requires at least 3 statute miles of flight visibility as observed from your control station (14 CFR 107.51(c)). A report under 3 statute miles is a strong sign the minimum will not be met nearby, but the rule is about what you can see from where you fly." } },
+        { "@type": "Question", "name": "How do I read FM, TEMPO, BECMG and PROB30 in a TAF?", "acceptedAnswer": { "@type": "Answer", "text": "FM plus six digits (date, hour, minute) starts a completely new set of conditions. TEMPO gives temporary conditions, each spell generally under an hour and together less than half of the period. BECMG is a gradual change somewhere in the period. PROB30 and PROB40 give a 30 to 39 or 40 to 49 percent chance of thunderstorms or precipitation. Except for FM, only the elements that change are listed." } },
+        { "@type": "Question", "name": "What is the difference between SKC and CLR?", "acceptedAnswer": { "@type": "Answer", "text": "SKC means sky clear and is reported by manual stations and used in TAFs. CLR is used by automated stations when no clouds are detected below 12,000 feet, because automated stations cannot report clouds above 12,000 feet." } },
+        { "@type": "Question", "name": "Does this decoder send my report anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. The report text never leaves your browser. The page sends Google Analytics a count of decodes (the report type and whether it decoded) and whether each practice answer was right." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header"><nav class="nav container">
+  <a class="brand" href="./">🛩 Part 107 <span class="tail">Quiz</span></a>
+  <div class="nav-links">
+    <a href="./mock-exam.html">Mock Exam</a>
+    <a href="./#practice">Practice Tests</a>
+    <a href="./study-guide/">Study Guide</a>
+    <a data-cta="nav_premium" href="./premium.html">Premium</a>
+    <a class="btn-cta" href="./free-mock-exam-pdf.html">Free 50-Q PDF</a>
+  </div>
+</nav></header>
+<main class="container narrow">
+  <p class="breadcrumb wx-page-only"><a href="./">Home</a> › <a href="./weather.html">Weather</a> › METAR &amp; TAF decoder</p>
+  <article class="prose">
+  <h1>METAR &amp; TAF Decoder with Part 107 Practice</h1>
+  <p class="wx-page-only">Paste a METAR, SPECI or TAF to read every group in plain English. You also get the ceiling, the flight category and what the report means for the Part 107 limits on visibility and distance from clouds. Then practice on made-up reports and check each answer.</p>
+
+  <section class="wx-card" aria-labelledby="decTitle">
+    <h2 id="decTitle">Decode a report</h2>
+    <label class="wx-tag" for="wxIn">METAR, SPECI or TAF (paste the raw text)</label>
+    <textarea id="wxIn" class="wx-in" spellcheck="false" autocomplete="off" autocapitalize="characters" placeholder="METAR KPIT 091955Z COR 22015G25KT 3/4SM R28L/2600FT TSRA OVC010CB 18/16 A2992 RMK SLP045 T01820159"></textarea>
+    <div class="wx-row">
+      <button class="btn btn-primary" id="wxGo" type="button">Decode</button>
+      <span class="wx-tag" id="exLabel">Examples from the FAA AIM:</span>
+      <span role="group" aria-labelledby="exLabel" style="display:flex;flex-wrap:wrap;gap:8px">
+        <button class="wx-chip" type="button" data-ex="0">METAR</button>
+        <button class="wx-chip" type="button" data-ex="1">Automated METAR</button>
+        <button class="wx-chip" type="button" data-ex="2">SPECI</button>
+        <button class="wx-chip" type="button" data-ex="3">TAF</button>
+      </span>
+    </div>
+    <div class="wx-out" id="wxOut" aria-live="polite"></div>
+  </section>
+
+  <section class="wx-card" aria-labelledby="prTitle">
+    <h2 id="prTitle">Practice on a made-up report</h2>
+    <p>Each report below is generated for practice. It looks like a real observation, but it is <strong>not real weather</strong> for that airport. Answer the questions, then decode the report to check every group.</p>
+    <div class="wx-row">
+      <button class="btn btn-primary" id="prNew" type="button">New practice report</button>
+      <button class="wx-chip" id="prDecode" type="button">Decode this report</button>
+    </div>
+    <div class="wx-report" id="prReport" aria-label="Practice report"></div>
+    <div id="prQs"></div>
+    <p class="wx-score" id="prScore" aria-live="polite"></p>
+  </section>
+  <p class="wx-embed-bar"><a href="https://part107quiz.com/metar-taf-decoder.html" target="_blank" rel="noopener">METAR &amp; TAF decoder · Part 107 Quiz</a></p>
+
+  <div class="wx-page-only">
+  <h2>How to read a METAR, group by group</h2>
+  <p>A METAR always keeps the same order. When an element is not reported, it is simply left out (FAA AIM 7-1-29):</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Group</th><th>Example</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td>Type</td><td>METAR / SPECI</td><td>Routine hourly observation, or a special one issued between them.</td></tr>
+      <tr><td>Station</td><td>KPIT</td><td>Four-letter ICAO identifier. In the contiguous 48 states it is K plus the three-letter identifier.</td></tr>
+      <tr><td>Date and time</td><td>091955Z</td><td>Day of the month (09) and time (1955) in UTC.</td></tr>
+      <tr><td>Modifier</td><td>AUTO / COR</td><td>AUTO: fully automated, no human. COR: a corrected report.</td></tr>
+      <tr><td>Wind</td><td>22015G25KT</td><td>From 220° true at 15 knots, gusts to 25. VRB = variable, 00000KT = calm.</td></tr>
+      <tr><td>Visibility</td><td>3/4SM</td><td>Prevailing visibility in statute miles and fractions.</td></tr>
+      <tr><td>Runway visual range</td><td>R28L/2600FT</td><td>How far down runway 28L a pilot can see, in feet.</td></tr>
+      <tr><td>Weather</td><td>TSRA, -RA, BR</td><td>Intensity (- light, none moderate, + heavy), descriptor, then the phenomenon.</td></tr>
+      <tr><td>Sky</td><td>OVC010CB</td><td>Cover (FEW, SCT, BKN, OVC), base in hundreds of feet above ground level, and CB or TCU.</td></tr>
+      <tr><td>Temperature / dew point</td><td>18/16</td><td>Degrees Celsius. M means minus: 00/M03.</td></tr>
+      <tr><td>Altimeter</td><td>A2992</td><td>29.92 inches of mercury.</td></tr>
+      <tr><td>Remarks</td><td>RMK AO2 SLP045</td><td>Extra detail, such as the station type and sea-level pressure (1004.5 hPa).</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Two details trip people up. The wind direction is where the wind comes <em>from</em>, and it is referenced to true north. Cloud heights are above ground level and in hundreds of feet, so BKN008 is 800 feet, not 8 or 8,000.</p>
+
+  <h2>Ceiling and flight category</h2>
+  <p>A METAR does not label the ceiling. For aviation purposes it is the lowest broken or overcast layer, or the vertical visibility into an obscuration (VV). The FAA groups conditions into four categories (AIM 7-1-7):</p>
+  <ul>
+    <li><strong>LIFR</strong>: ceiling below 500 ft and/or visibility below 1 mile.</li>
+    <li><strong>IFR</strong>: ceiling 500 to below 1,000 ft and/or visibility 1 to below 3 miles.</li>
+    <li><strong>MVFR</strong>: ceiling 1,000 to 3,000 ft and/or visibility 3 to 5 miles.</li>
+    <li><strong>VFR</strong>: ceiling above 3,000 ft and visibility above 5 miles, including sky clear.</li>
+  </ul>
+  <p>These categories describe conditions for flying in general. They are not Part 107 rules; the Part 107 limits are below.</p>
+
+  <h2>How to read a TAF</h2>
+  <p>A TAF is a forecast for an airport, usually for 24 hours and at some airports for 30. It uses the same codes as a METAR, split into time periods:</p>
+  <ul>
+    <li><strong>Valid period</strong>, such as 0918/1024: from 1800Z on the 9th to 2400Z on the 10th. In each half, the first two digits are the date and the last two the hour.</li>
+    <li><strong>FM091930</strong>: from 1930Z on the 9th, a rapid change to a completely new set of conditions. Read the first two digits as the date. FM100000 is 0000Z on the 10th, not 1000Z.</li>
+    <li><strong>TEMPO 0920/0922</strong>: temporary conditions. Each spell generally lasts less than an hour, and together they cover less than half the period.</li>
+    <li><strong>BECMG 1013/1015</strong>: a gradual change at some time in that period.</li>
+    <li><strong>PROB30 1004/1007</strong>: a 30 to 39 percent chance of the thunderstorms or precipitation that follow (PROB40: 40 to 49 percent).</li>
+    <li><strong>P6SM</strong> means visibility more than 6 statute miles. <strong>NSW</strong> means no significant weather; the other elements carry over.</li>
+    <li><strong>WS010/31022KT</strong>: low-level wind shear at 1,000 ft, where the wind is from 310° at 22 knots.</li>
+  </ul>
+  <p>Except in an FM group, a change group lists only the elements that change. Everything else carries over from the line before it.</p>
+
+  <h2>What a report means under Part 107</h2>
+  <p>Three limits in 14 CFR 107.51 matter when you read a report:</p>
+  <ul>
+    <li>Flight visibility of at least <strong>3 statute miles</strong>, as observed from your control station.</li>
+    <li>At least <strong>500 feet below</strong> clouds and <strong>2,000 feet horizontally</strong> from clouds.</li>
+    <li>No higher than <strong>400 feet above ground level</strong>, unless you are within 400 feet of a structure and no more than 400 feet above its top.</li>
+  </ul>
+  <p>The report describes the airport, not your site. Visibility is the airport's surface visibility, and cloud heights are above the airport's ground level. With a lowest layer at 700 feet, for example, staying 500 feet below it means flying no higher than 200 feet above that ground level. The decoder shows that number for each report. FEW and SCT layers have gaps: away from those clouds, the rule is to stay 2,000 feet horizontally from them.</p>
+  <p>Ready for exam-style questions? Try the <a href="./weather.html">weather practice test</a>, read the <a href="./study-guide/weather-for-drone-pilots.html">weather guide</a>, or take a full <a href="./mock-exam.html">60-question mock exam</a>. The <a data-cta="wx_premium" href="./premium.html">Premium Pack</a> adds printable mock exams and a study bank with plain-English explanations.</p>
+
+  <h2>Frequently asked questions</h2>
+  <details class="faq"><summary>Is the wind direction in a METAR true or magnetic?</summary><p>True. The first three digits of the wind group are the direction the wind is blowing from, rounded to the nearest 10 degrees and referenced to true north (FAA AIM 7-1-29). 22015G25KT is wind from 220 degrees true at 15 knots, gusting to 25.</p></details>
+  <details class="faq"><summary>What is the ceiling in a METAR or TAF?</summary><p>The lowest broken (BKN) or overcast (OVC) layer, or the vertical visibility (VV) into an obscuration. FEW and SCT layers are not a ceiling. Cloud heights are three digits in hundreds of feet above ground level, so BKN008 is a ceiling of 800 feet.</p></details>
+  <details class="faq"><summary>Is METAR visibility the same as Part 107 flight visibility?</summary><p>No. A METAR gives the prevailing surface visibility at the airport. Part 107 requires at least 3 statute miles of flight visibility as observed from your control station (14 CFR 107.51(c)). A report under 3 statute miles is a strong sign the minimum will not be met nearby, but the rule is about what you can see from where you fly.</p></details>
+  <details class="faq"><summary>How do I read FM, TEMPO, BECMG and PROB30 in a TAF?</summary><p>FM plus six digits (date, hour, minute) starts a completely new set of conditions. TEMPO gives temporary conditions, each spell generally under an hour and together less than half of the period. BECMG is a gradual change somewhere in the period. PROB30 and PROB40 give a 30 to 39 or 40 to 49 percent chance of thunderstorms or precipitation. Except for FM, only the elements that change are listed.</p></details>
+  <details class="faq"><summary>What is the difference between SKC and CLR?</summary><p>SKC means sky clear and is reported by manual stations and used in TAFs. CLR is used by automated stations when no clouds are detected below 12,000 feet, because automated stations cannot report clouds above 12,000 feet.</p></details>
+  <details class="faq"><summary>Does this decoder send my report anywhere?</summary><p>No. The report text never leaves your browser. The page sends Google Analytics a count of decodes (the report type and whether it decoded) and whether each practice answer was right.</p></details>
+
+  <h2>Use this decoder in a class</h2>
+  <div class="wx-embed">
+    <p>Paste this code into a class page or learning platform to show the decoder and the practice reports there. It is free to use for teaching, with the link back kept.</p>
+    <label class="wx-tag" for="embedCode">Embed code</label>
+    <textarea id="embedCode" readonly></textarea>
+    <div class="wx-row"><button class="wx-chip" id="embedCopy" type="button">Copy the code</button></div>
+  </div>
+
+  <h2>Sources</h2>
+  <p>FAA Aeronautical Information Manual 7-1-7, 7-1-14, 7-1-28 and 7-1-29; 14 CFR 107.51 (eCFR, current as of November 4, 2026). For real reports, use <a href="https://aviationweather.gov" rel="noopener">aviationweather.gov</a>, the official U.S. source.</p>
+  <p class="updated">Updated November 2026 · Part 107 Quiz editorial team</p>
+  </div>
+  </article>
+</main>
+<footer class="site-footer"><div class="container">
+  <div class="foot-links">
+    <a href="./">Home</a>
+    <a href="./mock-exam.html">Mock Exam</a>
+    <a href="./study-guide/">Study Guide</a>
+    <a href="./free-mock-exam-pdf.html">Free PDF</a>
+    <a data-cta="footer_premium" href="./premium.html">Premium</a>
+    <a href="./about.html">About</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./terms.html">Terms</a>
+  </div>
+  <p class="legal">Part107Quiz.com is an independent study resource and is not affiliated with, endorsed by, or sponsored by the Federal Aviation Administration (FAA) or any government agency. Question content is original and based on publicly available FAA source material (14 CFR Part 107, the Remote Pilot ACS, and FAA study guides). Always verify current regulations at faa.gov before you fly. © 2026 Part107Quiz.com</p>
+</div></footer>
+<div class="cookie-note" id="cookieBanner" role="region" aria-label="Cookie notice" hidden>
+  <span>We use Google Analytics cookies to see which pages and quizzes are used, including finished-quiz scores. Your answers stay in your browser. <a href="./privacy.html">Privacy Policy</a></span>
+  <button type="button" id="cookieOkBtn">OK</button>
+</div>
+<script src="./assets/js/metar-taf.js"></script>
+<script>
+(function () {
+  "use strict";
+  var WX = window.P107WX;
+  if (!WX) return;
+  function send(name, params) { try { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); } catch (e) {} }
+  function el(tag, attrs, parent) {
+    var n = document.createElement(tag);
+    for (var k in attrs) { if (k === "text") n.textContent = attrs[k]; else n.setAttribute(k, attrs[k]); }
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  var EX = [
+    "METAR KPIT 091955Z COR 22015G25KT 3/4SM R28L/2600FT TSRA OVC010CB 18/16 A2992 RMK SLP045 T01820159",
+    "METAR KSFO 041453Z AUTO VRB02KT 3SM BR CLR 15/12 A3012 RMK AO2",
+    "SPECI KCVG 152224Z 28024G36KT 3/4SM +TSRA BKN008 OVC020CB 28/23 A3000 RMK TSRAB24 TS W MOV E",
+    "TAF KPIT 091730Z 0918/1024 15005KT 5SM HZ FEW020 WS010/31022KT\n  FM091930 30015G25KT 3SM SHRA OVC015\n  TEMPO 0920/0922 1/2SM +TSRA OVC008CB\n  FM100100 27008KT 5SM SHRA BKN020 OVC040\n  PROB30 1004/1007 1SM -RA BR\n  FM101015 18005KT 6SM -SHRA OVC020\n  BECMG 1013/1015 P6SM NSW SKC"
+  ];
+  var input = document.getElementById("wxIn"), out = document.getElementById("wxOut");
+  var CAT = { VFR: "VFR", MVFR: "MVFR (marginal VFR)", IFR: "IFR", LIFR: "LIFR (low IFR)" };
+
+  function noteBox(n, parent) {
+    var d = el("div", { "class": "wx-note" + (n.level === "warn" ? " warn" : "") }, parent);
+    el("b", { text: n.level === "warn" ? "Part 107: check this" : n.level === "ok" ? "Part 107: compare" : "Note" }, d);
+    d.appendChild(document.createTextNode(n.text));
+  }
+  function periodLabel(P) {
+    if (P.change === "BASE") return "Initial forecast";
+    if (P.change === "FM") return "From " + String(P.from.h).replace(/^(\d)$/, "0$1") + String(P.from.m).replace(/^(\d)$/, "0$1") + "Z on day " + P.from.d;
+    var per = P.period ? " " + String(P.period.d1).replace(/^(\d)$/, "0$1") + String(P.period.h1).replace(/^(\d)$/, "0$1") + "/" + String(P.period.d2).replace(/^(\d)$/, "0$1") + String(P.period.h2).replace(/^(\d)$/, "0$1") : "";
+    return P.change + (P.prob ? P.prob : "") + (P.tempo && P.change === "PROB" ? " TEMPO" : "") + per;
+  }
+  function render(o) {
+    out.innerHTML = "";
+    if (o.errors.length && o.groups.length <= 1) { el("p", { "class": "wx-err", text: o.errors[0] }, out); return; }
+    if (o.kind === "METAR") {
+      var sum = el("div", { "class": "wx-sum" }, out);
+      el("span", { text: "Ceiling: " + (o.ceiling ? (o.ceiling.cover === "VV" ? "vertical visibility " : "") + o.ceiling.h.toLocaleString("en-US") + " ft AGL" : "none reported") }, sum);
+      if (o.category) el("span", { text: "Flight category: " + CAT[o.category] + " (not a Part 107 rule)" }, sum);
+    }
+    var tb = el("table", {}, out), th = el("thead", {}, tb), hr = el("tr", {}, th);
+    el("th", { text: "Group" }, hr); el("th", { "class": "lab", text: "Element" }, hr); el("th", { text: "Meaning" }, hr);
+    var body = el("tbody", {}, tb), lastP = -2;
+    for (var i = 0; i < o.groups.length; i++) {
+      var g = o.groups[i];
+      if (o.kind === "TAF" && g.period !== undefined && g.period !== lastP && g.period >= 0) {
+        lastP = g.period;
+        var pr = el("tr", { "class": "per" }, body);
+        el("td", { colspan: "3", text: periodLabel(o.periods[g.period]) }, pr);
+      }
+      var tr = el("tr", {}, body);
+      el("td", { "class": "raw", text: g.raw }, tr);
+      el("td", { "class": "lab", text: g.label }, tr);
+      el("td", { text: g.text }, tr);
+    }
+    if (o.errors.length) el("p", { "class": "wx-err", text: o.errors.join(" ") }, out);
+    if (o.kind === "METAR") for (var n = 0; n < o.notes.length; n++) noteBox(o.notes[n], out);
+    if (o.kind === "TAF") {
+      for (var p = 0; p < o.periods.length; p++) {
+        var P = o.periods[p], notes = WX.part107Notes({ vis: P.vis, layers: P.layers, clear: P.clear, forecast: true });
+        if (!notes.length) continue;
+        el("p", { "class": "wx-tag", text: periodLabel(P) + ":" }, out);
+        for (var q = 0; q < notes.length; q++) if (notes[q].level !== "info") noteBox(notes[q], out);
+      }
+      noteBox({ level: "info", text: "Part 107 also requires 2,000 ft horizontally from clouds. A TAF is a forecast for the airport, not the view from your site, and its cloud heights are above the airport's ground level." }, out);
+    }
+  }
+  function run(src) {
+    var o = WX.decode(input.value);
+    render(o);
+    send("wx_decode", { report_type: o.kind, ok: o.errors.length ? "no" : "yes", source: src });
+  }
+  document.getElementById("wxGo").addEventListener("click", function () { run("typed"); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ex]"), function (b) {
+    b.addEventListener("click", function () { input.value = EX[+b.getAttribute("data-ex")]; run("example"); });
+  });
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); run("typed"); } });
+
+  /* practice */
+  var rep = document.getElementById("prReport"), qbox = document.getElementById("prQs"), score = document.getElementById("prScore");
+  var current = null, answered = 0, right = 0, sets = 0;
+  function seedNow() { var a = new Uint32Array(1); try { window.crypto.getRandomValues(a); return a[0] || 1; } catch (e) { return Math.floor(Math.random() * 4294967295) + 1; } }
+  function newSet() {
+    var seed = seedNow(), m = WX.genMetar(seed), set = WX.questionsFor(m, seed);
+    current = set; answered = 0; right = 0; sets++;
+    rep.textContent = m;
+    qbox.innerHTML = ""; score.textContent = "";
+    set.questions.forEach(function (q, qi) {
+      var box = el("div", { "class": "wx-q", role: "group", "aria-labelledby": "q" + sets + "_" + qi }, qbox);
+      el("div", { "class": "qt", id: "q" + sets + "_" + qi, text: (qi + 1) + ". " + q.prompt }, box);
+      var buttons = [];
+      q.options.forEach(function (opt, oi) {
+        var b = el("button", { "class": "wx-opt", type: "button", text: opt }, box);
+        buttons.push(b);
+        b.addEventListener("click", function () {
+          buttons.forEach(function (x, xi) { x.disabled = true; if (xi === q.answer) x.classList.add("correct"); });
+          var ok = oi === q.answer;
+          if (!ok) b.classList.add("wrong");
+          var ex = el("div", { "class": "explain" }, box);
+          ex.textContent = (ok ? "Correct. " : "Not quite. ") + q.explain;
+          answered++; if (ok) right++;
+          send("wx_practice_answer", { correct: ok ? "yes" : "no" });
+          if (answered === set.questions.length) {
+            score.textContent = "You got " + right + " of " + answered + ". Press “New practice report” for another one.";
+            send("wx_practice_set", { score: right, of: answered });
+          } else score.textContent = right + " of " + answered + " so far.";
+        });
+      });
+    });
+  }
+  document.getElementById("prNew").addEventListener("click", newSet);
+  document.getElementById("prDecode").addEventListener("click", function () {
+    if (!current) return;
+    input.value = current.metar; run("practice");
+    document.getElementById("decTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  newSet();
+
+  /* embed code */
+  var ta = document.getElementById("embedCode");
+  if (ta) {
+    var url = "https://part107quiz.com/metar-taf-decoder.html";
+    ta.value = '<iframe src="' + url + '?embed=1" title="METAR and TAF decoder with Part 107 practice" width="100%" height="1400" style="border:0;max-width:760px" loading="lazy"></iframe>\n<p><a href="' + url + '">METAR and TAF decoder</a> from Part 107 Quiz</p>';
+    document.getElementById("embedCopy").addEventListener("click", function () {
+      var btn = this;
+      function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy the code"; }, 2000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done, function () { ta.select(); });
+      else { ta.select(); try { document.execCommand("copy"); done(); } catch (e) {} }
+    });
+  }
+  if (document.documentElement.classList.contains("wx-embedded")) {
+    Array.prototype.forEach.call(document.querySelectorAll("a[href]"), function (a) { a.target = "_blank"; a.rel = "noopener"; });
+  }
+})();
+(function () {
+  var b = document.getElementById("cookieBanner"), ok = null;
+  try { ok = localStorage.getItem("cookieOk"); } catch (e) {}
+  if (!b || ok || document.documentElement.classList.contains("wx-embedded")) return;
+  b.hidden = false;
+  document.getElementById("cookieOkBtn").onclick = function () {
+    b.hidden = true;
+    try { localStorage.setItem("cookieOk", "1"); } catch (e) {}
+  };
+})();
+</script>
+</body>
+</html>

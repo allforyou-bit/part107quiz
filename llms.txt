@@ -51,6 +51,7 @@ premise, ambiguous stem) were removed rather than patched.
 - [Regulations](https://part107quiz.com/regulations.html) — 37 questions
 - [Airspace and sectional charts](https://part107quiz.com/airspace.html) — 38 questions
 - [Weather](https://part107quiz.com/weather.html) — 20 questions
+- [METAR & TAF decoder with Part 107 practice](https://part107quiz.com/metar-taf-decoder.html): paste a METAR, SPECI or TAF to read every group in plain English, with the ceiling, the FAA flight category and the Part 107 visibility (3 SM) and cloud distance (500 ft below, 2,000 ft horizontal) limits; practice questions on generated reports. Runs in the browser.
 - [Loading and performance](https://part107quiz.com/loading-performance.html) — 14 questions
 - [Operations](https://part107quiz.com/operations.html) — 46 questions
 - [Night operations](https://part107quiz.com/night-operations.html) — 9 questions
