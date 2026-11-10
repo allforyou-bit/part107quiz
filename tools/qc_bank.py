@@ -139,6 +139,8 @@ for hf in html_files:
         t = attr
         if t.startswith(("http", "data:", "mailto:", "//")):
             continue
+        if "' + " in t or " + '" in t:  # a JS string being built in a script, not a link in the page
+            continue
         if t.startswith("/"):  # root-absolute (404 page) — checked against ROOT
             p = os.path.join(ROOT, t.lstrip("/"))
             if t == "/":
