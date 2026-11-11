@@ -59,6 +59,12 @@ premise, ambiguous stem) were removed rather than patched.
 - [Sectional chart image practice](https://part107quiz.com/chart-image-practice.html) — 25 image-based questions on excerpts of FAA sectional charts (September 3, 2026 editions), each with an explanation
 - [Free 50-question practice exam PDF](https://part107quiz.com/free-mock-exam-pdf.html) with answer key and explanations
 
+## Canada: Transport Canada drone pilot exams (separate from Part 107)
+
+- [Canada drone pilot exam practice questions](https://part107quiz.com/canada-drone-pilot-exam.html): 24 free practice questions for the Transport Canada Small Basic and Advanced exams, each with the answer, the reason and the Canadian Aviation Regulations (CARs) or TC AIM reference, written to the rules as amended in force November 4, 2025. Independent and unofficial: not affiliated with Transport Canada.
+- Exam facts from Transport Canada's pages (read November 10-11, 2026): Small Basic Exam 35 multiple-choice questions, 90 minutes, pass mark 65%, minimum age 14; Advanced Exam 50 questions, 60 minutes, pass mark 80%, minimum age 16, plus a flight review for the Advanced certificate. Both are written online in the Drone Management Portal; the fee is $10.17 per attempt; a failed exam can be retaken after 24 hours with no limit on attempts.
+- A paid PDF pack (572 questions: a study bank plus 4 Advanced and 2 Small Basic practice exams drawn from it, CA$19) is linked from that page.
+
 ## Study guides
 
 - [What is Part 107?](https://part107quiz.com/study-guide/what-is-part-107.html)
