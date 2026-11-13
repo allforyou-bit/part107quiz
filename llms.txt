@@ -65,6 +65,12 @@ premise, ambiguous stem) were removed rather than patched.
 - Exam facts from Transport Canada's pages (read November 10-11, 2026): Small Basic Exam 35 multiple-choice questions, 90 minutes, pass mark 65%, minimum age 14; Advanced Exam 50 questions, 60 minutes, pass mark 80%, minimum age 16, plus a flight review for the Advanced certificate. Both are written online in the Drone Management Portal; the fee is $10.17 per attempt; a failed exam can be retaken after 24 hours with no limit on attempts.
 - A paid PDF pack (572 questions: a study bank plus 4 Advanced and 2 Small Basic practice exams drawn from it, CA$19) is linked from that page.
 
+## FAA Private Pilot Airplane (PAR) knowledge test (separate from Part 107)
+
+- [Private pilot knowledge test practice questions](https://part107quiz.com/private-pilot-knowledge-test.html): 24 free practice questions for the FAA Private Pilot Airplane (PAR) knowledge test, each with the answer, the explanation, the ACS code (FAA-S-ACS-6C) and the 14 CFR, AIM or FAA handbook reference. Independent and unofficial: not affiliated with the FAA or PSI.
+- Test facts (PSI candidate information bulletin for the PAR test and 14 CFR part 61, read November 12, 2026): 60 scored multiple-choice questions plus 5 unscored, 120 minutes, pass mark 70%; an instructor's endorsement or a course graduation certificate before testing (14 CFR 61.35, 61.103(d)); retesting after a failure needs an instructor's endorsement after additional training (61.49); the checkride must follow within 24 calendar months (61.39).
+- A paid PDF pack (857 questions: a study bank plus 5 practice exams of 60 drawn from it, with the FAA testing-supplement figures they use, CA$29) is linked from that page.
+
 ## Study guides
 
 - [What is Part 107?](https://part107quiz.com/study-guide/what-is-part-107.html)

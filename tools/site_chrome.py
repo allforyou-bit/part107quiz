@@ -37,7 +37,7 @@ FOOT_BLURB = "Free practice tests and plain-English study guides for the FAA Par
 
 FOOT_COLS = [
     ("Practice", [
-        ("mock-exam.html", "60-question mock exam", None),
+        ("mock-exam.html", "Part 107 mock exam", None),
         ("regulations.html", "Regulations", None),
         ("airspace.html", "Airspace", None),
         ("weather.html", "Weather", None),
@@ -49,8 +49,9 @@ FOOT_COLS = [
         ("study-guide/", "Study guide", None),
         ("study-guide/how-to-get-part-107-license.html", "How to get your certificate", None),
         ("free-mock-exam-pdf.html", "Free 50-question PDF", None),
-        ("premium.html", "Premium Pack", "footer_premium"),
+        ("premium.html", "Part 107 Premium Pack", "footer_premium"),
         ("canada-drone-pilot-exam.html", "Canada drone pilot exam", None),
+        ("private-pilot-knowledge-test.html", "Private pilot (PAR) test", None),
     ]),
     ("Site", [
         ("", "Home", None),

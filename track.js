@@ -46,7 +46,7 @@
 
   /* Ko-fi product id -> product. Any other id is reported as "unknown",
      never guessed. */
-  var PRODUCTS = { "b74b8f7ec3": "p107_premium" };
+  var PRODUCTS = { "b74b8f7ec3": "p107_premium", "bd2524c16e": "tc_drone_pack", "e28b65858b": "par_pack" };
 
   /* Nav and footer appear on every page; an impression there says nothing. */
   var NOT_AN_OFFER = { "nav_premium": true, "footer_premium": true };
