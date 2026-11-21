@@ -533,6 +533,18 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
 .buy-note { font-size: .88rem; color: #c6d7ea; max-width: 560px; margin: 14px auto 0; }
 .cta-box .buy-note { margin: 12px auto 0; font-size: .88rem; }
 .buy-note.pay-note, .cta-box .buy-note.pay-note { margin-top: 6px; }
+/* Mock result: the direct Ko-fi button and its one-line checkout note, under
+   the card's two existing buttons (data-cta="mock_result_kofi", gate
+   p107-mock-result-kofi-direct, decided 2026-11-04). White on the navy card,
+   so it reads as a different action from the orange premium.html button and
+   the free-PDF ghost button; navy on white is 15:1. They sit here, after the
+   .btn and .cta-box .buy-note rules they override (the note rule also
+   outranks .cta-box .buy-note), not at the end of the file. */
+.cta-box .kofi-direct { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); }
+.btn-kofi { background: #fff; color: var(--navy); }
+.btn-kofi:hover { background: #e8f2fb; color: var(--navy); transform: translateY(-1px); }
+.btn-kofi:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.cta-box .kofi-direct .buy-note { margin: 10px auto 0; }
 .sample-title { color: var(--navy); font-size: 1.18rem; margin: 30px 0 4px; letter-spacing: -.01em; }
 .sample-lede { color: var(--muted); font-size: .94rem; margin-bottom: 14px; }
 .sample-pages figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; box-shadow: var(--shadow-sm); }

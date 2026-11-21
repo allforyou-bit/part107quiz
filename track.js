@@ -3,23 +3,34 @@
    Sends GA4 events (through the gtag snippet in each page's head) that say
    which page, link or quiz result led a visitor to the Premium Pack.
 
-   How the funnel is built on this site: the ONLY Ko-fi links are the two buy
+   How the funnel is built on this site: the Ko-fi links are the two buy
    buttons on premium.html (their href is filled in from config.js
-   products.premiumUrl at DOMContentLoaded). Every other Premium link - nav,
-   footer, the quiz and mock result card, the free-PDF page, the mock-exam
-   page, the cost guide, the free PDF's last page - points at premium.html,
-   which explains the pack before anyone reaches the checkout. So there are
-   two click events, and they are kept apart on purpose:
+   products.premiumUrl at DOMContentLoaded) and, since the gate
+   p107-mock-result-kofi-direct (decided 2026-11-04), one direct buy button
+   on the 60-question mock result card (placement mock_result_kofi, href from
+   the same products.premiumUrl, added by quiz.js under the card's
+   premium.html button). Every other Premium link - nav, footer, the quiz and
+   mock result card's Premium button, the free-PDF page, the mock-exam page,
+   the cost guide, the free PDF's last page - points at premium.html, which
+   explains the pack before anyone reaches the checkout. So there are two
+   click events, and they are kept apart on purpose:
 
      buy_click       click on a ko-fi.com link (the checkout itself). Purchase
                      intent. Carries via_placement / via_page: the internal
-                     link that brought this tab to premium.html, if any.
+                     link that brought this tab to premium.html, if any. Only
+                     a click on premium.html reads it; the mock result's
+                     direct button (mock_result_kofi) skips premium.html and
+                     always reports "none".
      premium_click   click on an internal link to premium.html. Interest, not
                      purchase intent - counting it as buy_click would count one
                      buyer twice (result card, then checkout button).
      offer_view      a priced offer (a Ko-fi button or an in-content Premium
                      Pack link) was at least half on screen for 1 second, once
-                     per placement per page view. The nav and footer links are
+                     per placement per page view. "On screen" means inside
+                     the viewport: a button under the sticky header still
+                     counts, so this is not RedSeal's offer_visible (views
+                     not covered by anything) and the two rates are not
+                     compared. The nav and footer links are
                      on every page, so they are not offers here; their
                      denominator is page_view. The quiz/mock result card can
                      be shown several times in one page view (Try Again), so
@@ -73,8 +84,9 @@
   /* Where on the page the reader was when they clicked. Static links carry
      data-cta (nav_premium, footer_premium, premium_page_top,
      premium_page_bottom, free_pdf_page, mock_page, guide_cost_page) and quiz.js
-     tags the result card (quiz_result / mock_result). The walk below only
-     names a link someone adds later without a tag. */
+     tags the result card (quiz_result / mock_result for its premium.html
+     links, mock_result_kofi for the mock result's direct Ko-fi button). The
+     walk below only names a link someone adds later without a tag. */
   function placement(a) {
     var tag = a.getAttribute && a.getAttribute("data-cta");
     if (tag) return tag;
@@ -161,7 +173,12 @@
       var o = offerInfo(a);
 
       if (o && o.kind === "kofi") {
-        var via = readVia();
+        /* via says how this tab reached premium.html, so only the checkout
+           buttons there read it. The mock result's direct button skips
+           premium.html; an older via in the same tab would credit a route
+           this buyer did not take. /premium is how GitHub Pages also serves
+           premium.html. */
+        var via = /(^|\/)premium(\.html)?$/i.test(page) ? readVia() : null;
         send("buy_click", {
           placement: o.placement,
           link_type: o.link_type,
@@ -209,6 +226,7 @@
       }
       viewed.quiz_result = false;
       viewed.mock_result = false;
+      viewed.mock_result_kofi = false; /* the mock result's direct Ko-fi button */
       refresh();
     } catch (e) { /* never break the quiz */ }
   });

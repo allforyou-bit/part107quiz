@@ -335,6 +335,41 @@
       if (buy) wrap.appendChild(buy);
     }
     cta.appendChild(wrap);
+    /* Direct Ko-fi button on the mock result (gate
+       p107-mock-result-kofi-direct, decided 2026-11-04). Every other offer
+       on the site goes to premium.html first and the Ko-fi product page is a
+       second step; here someone who has just finished a full-length
+       rehearsal can go straight to it. It goes under the two buttons above,
+       which keep their copy, order and placement (mock_result), so the
+       premium.html route stays exactly as it was.
+       Reading it: this GA4 property has no placement dimension (W7), so it
+       is read by page path. This is the only Ko-fi link on /mock-exam.html,
+       so buy_click on that page / mock_finished users is this button.
+       Cannibalisation: page_view and buy_click on /premium.html, and
+       premium_click on /mock-exam.html (which also counts the nav, footer
+       and mock_page links) / mock_finished users, before vs after the ship
+       time. Page-level offer_view on /mock-exam.html gains this placement at
+       the ship time, so it is never compared across it. The placement
+       mock_result_kofi still goes with offer_view and buy_click (track.js)
+       for when W7 is registered.
+       The CA$29 in the button and the line under it (the Ko-fi shop name,
+       Canadian dollars, card or PayPal - premium.html also names Apple Pay and Google Pay) are true of one
+       listing only, so the button shows only when products.premiumUrl is
+       that listing (b74b8f7ec3, the id track.js maps to p107_premium). With
+       any other URL - a closed store, a price test, a v2 listing - the card
+       is exactly as before, until this check, the price and the line are
+       changed together. Topic results do not get it. */
+    var kofiUrl = (cfg.products && cfg.products.premiumUrl) || "";
+    if (premiumFirst && /^https:\/\/ko-fi\.com\/s\/b74b8f7ec3\/?$/i.test(kofiUrl)) {
+      var direct = el("div", "kofi-direct");
+      /* the no-break spaces keep the dash and the dots off the start of a line */
+      var kofi = el("a", "btn btn-kofi", "Buy the Premium Pack on Ko-fi\u00a0— CA$29");
+      kofi.href = kofiUrl;
+      kofi.setAttribute("data-cta", "mock_result_kofi");
+      direct.appendChild(kofi);
+      direct.appendChild(el("p", "buy-note", "Ko-fi shop: Red Seal Exam Prep\u00a0· Prices in CAD\u00a0· Card or PayPal"));
+      cta.appendChild(direct);
+    }
     /* The offer comes straight after the score, then the per-area breakdown
        and the review of misses (2026-10-07). Below the breakdown, its Premium
        button opened 920-1009 px down at 375x812: off the first screen of
