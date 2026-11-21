@@ -127,7 +127,7 @@
     }
     /* An in-content link reads just "Premium Pack" and states the price in
        the sentence around it, so it carries data-price="29" (CA$), which wins.
-       Otherwise the price is in the link text ("... - CA$29 (≈ US$21)"): one
+       Otherwise the price is in the link text ("... - CA$29 (≈ US$20)"): one
        CA$ amount is a price; none, or two different ones, report null. */
     var price = null;
     var tagged = parseFloat((a.getAttribute && a.getAttribute("data-price")) || "");

@@ -692,3 +692,15 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
   * { transition: none !important; scroll-behavior: auto !important; }
 }
 .site-footer .brand-mark { box-shadow: 0 0 0 1px rgba(255, 255, 255, .2); }
+
+/* Classroom share note (2026-11-21), mock-exam.html and the home page: plain
+   text for instructors, no data-cta, no script. The two URLs are printed in
+   full so they can be copied, and may break anywhere so a 320 px phone never
+   scrolls sideways. On the mock page its own URL is text, not a link, so a
+   stray tap cannot reload an exam in progress. */
+.card.share-card { margin-top: 22px; padding: 18px 20px; border-left: 4px solid var(--sky); }
+.card.share-card:hover { border-left-color: var(--sky); }
+.share-card h3 { font-size: 1.02rem; }
+.share-card p + p { margin-top: 8px; }
+.share-card .share-url { font-weight: 600; overflow-wrap: anywhere; word-break: break-word; }
+.share-card span.share-url { color: var(--navy); -webkit-user-select: all; user-select: all; }
