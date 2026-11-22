@@ -626,7 +626,10 @@ table.blueprint a { color: var(--navy-3); font-weight: 600; }
    tablet are unchanged. */
 @media (max-width: 560px) {
   .topic-main { display: flex; flex-direction: column; }
-  .topic-main > * { order: 3; }
+  /* max-width: a flex item with auto side margins is sized to its content, so a
+     table wider than the column pushed the private-pilot and Canada pages to
+     353-357 px at a 320 px viewport; capped, the table scrolls in .table-scroll */
+  .topic-main > * { order: 3; max-width: 100%; }
   .topic-main > .topic-head { order: 0; }
   .topic-main > #quiz-root { order: 1; }
   .topic-main > .topic-intro { order: 2; margin-top: 4px !important; }
