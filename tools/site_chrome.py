@@ -52,6 +52,7 @@ FOOT_COLS = [
         ("premium.html", "Part 107 Premium Pack", "footer_premium"),
         ("canada-drone-pilot-exam.html", "Canada drone pilot exam", None),
         ("private-pilot-knowledge-test.html", "Private pilot (PAR) test", None),
+        ("epa-608-practice-test.html", "EPA 608 practice test", None),
     ]),
     ("Site", [
         ("", "Home", None),

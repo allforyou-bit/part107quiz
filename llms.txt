@@ -71,6 +71,12 @@ premise, ambiguous stem) were removed rather than patched.
 - Test facts (PSI candidate information bulletin for the PAR test and 14 CFR part 61, read November 12, 2026): 60 scored multiple-choice questions plus 5 unscored, 120 minutes, pass mark 70%; an instructor's endorsement or a course graduation certificate before testing (14 CFR 61.35, 61.103(d)); retesting after a failure needs an instructor's endorsement after additional training (61.49); the checkride must follow within 24 calendar months (61.39).
 - A paid PDF pack (857 questions: a study bank plus 5 practice exams of 60 drawn from it, with the FAA testing-supplement figures they use, CA$29) is linked from that page.
 
+## EPA Section 608 technician certification test (refrigerant handling; separate from Part 107)
+
+- [EPA 608 practice test](https://part107quiz.com/epa-608-practice-test.html): 25 free practice questions for the Core section of the EPA Section 608 technician certification test, each with the answer, the explanation and the 40 CFR section, EPA web page or Federal Register notice behind it, plus test facts for Type I, Type II, Type III and Universal. The questions are original, written from public federal sources, not taken from any certification test. Independent and unofficial: not affiliated with or endorsed by the U.S. Environmental Protection Agency or any certifying organization.
+- Test facts (40 CFR part 82, subpart F, 82.161 and Appendix D, and EPA's Section 608 pages, read November 22, 2026): 25 questions per section, Core plus a section for each Type taken (Type I small appliances; Type II medium-, high- and very high-pressure appliances; Type III low-pressure appliances); Universal is all four, 100 questions. Pass mark 70% on the closed-book Type I, II, III and Universal tests (18 of 25 in a section); mail-in Type I tests 84%. Type II, Type III and Universal are closed-book and proctored. EPA-approved technician certification programs give the tests; EPA does not. Credentials do not expire.
+- Certifying organizations report that EPA updated the test bank in August 2026 and that exams from the previous bank end on January 1, 2027.
+
 ## Study guides
 
 - [What is Part 107?](https://part107quiz.com/study-guide/what-is-part-107.html)
