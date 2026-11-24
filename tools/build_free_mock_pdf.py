@@ -184,6 +184,10 @@ def build():
     # 2026-10-14: the box described only the mocks and the bank. It now says
     # what v1.2 (2026-10-06) is: plus 56 sectional chart image questions, 25 of
     # them free on the site, with a clickable link to those 25.
+    # 2026-11-24 (web-growth-lab): drift fix. Dropped the "(v1.2)" label (the
+    # pack is v1.3 since 11-22; the version is not a buyer fact), US$21 -> US$20
+    # to match the site (BoC 2026-11-20), and the October 26 line now reads as
+    # the premium page does (a set date, not a future one).
     story.append(PageBreak())
     story.append(Paragraph("Want more full-length practice?", h1))
     story.append(Paragraph(f"An optional paid add-on from {SITE}", sub))
@@ -196,7 +200,7 @@ def build():
                             fontSize=14, leading=18, textColor=NAVY,
                             spaceAfter=10)
     box = Table([[[
-        Paragraph("Part 107 Premium Pack (v1.2)", ptitle),
+        Paragraph("Part 107 Premium Pack", ptitle),
         Paragraph("5 more full 60-question mock exams, drawn at the FAA's area "
                   "weighting in effect since September 29, 2025. No question "
                   "repeats across the five exams.", pbullet, bulletText="•"),
@@ -209,7 +213,7 @@ def build():
                   "answer key and explanations. 31 are only in the pack; the "
                   "other 25 are the free chart image practice on the site.",
                   pbullet, bulletText="•"),
-        Paragraph("Printable PDFs. One-time CA$29 (about US$21), charged in "
+        Paragraph("Printable PDFs. One-time CA$29 (about US$20), charged in "
                   "Canadian dollars. No subscription.", pbullet,
                   bulletText="•"),
     ]]], colWidths=[6.9 * inch])
@@ -224,8 +228,8 @@ def build():
     story.append(box)
     story.append(Spacer(1, 12))
     story.append(Paragraph(
-        "The FAA says image-based questions from current sectional charts join "
-        "the Part 107 test on October 26, 2026. The pack's chart questions are "
+        "The FAA set October 26, 2026 as the start date for image-based questions "
+        "from current sectional charts on the Part 107 test. The pack's chart questions are "
         "our own practice in that format, not actual FAA test questions. "
         "Try the 25 free ones: "
         f'<a href="https://{SITE}/chart-image-practice.html" color="#1d4e89">'
