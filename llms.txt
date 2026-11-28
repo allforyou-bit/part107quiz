@@ -34,7 +34,11 @@ premise, ambiguous stem) were removed rather than patched.
   that quotes ranges such as "Operations 35-45%" is out of date.
 - The FAA set October 26, 2026 as the start date for image-based questions on
   the UAG test from current VFR charts that are not in the testing supplement
-  (Airman Testing Community Advisory, September 2026 Special Edition). The supplement itself is FAA-CT-8080-2H.
+  (Airman Testing Community Advisory, September 2026 Special Edition). The
+  October 2026 edition (p. 6) says the UAG test began featuring these questions
+  as of October 26, 2026. The supplement itself is FAA-CT-8080-2H; the October 2026
+  edition says candidates keep access to it until a removal date is set, and
+  none has been set yet.
 - Pass rate for the initial test, from FAA airman knowledge test statistics:
   82.96% in 2025 and 84.20% in 2024, down from above 92% in 2017-2020.
 - Retesting after a failure requires a 14-day wait (PSI bulletin).
